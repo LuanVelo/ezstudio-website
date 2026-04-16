@@ -197,8 +197,42 @@ function initFaqAnimation() {
   });
 }
 
+/* ═══════════════════════════════════════════
+ * PROJECTS GRID — Page load animation (work.html)
+ * Sequência: tag → heading+sub → cards stagger
+ * ═══════════════════════════════════════════ */
+
+function initProjectsGridPageLoad() {
+  const section = document.getElementById('projects-grid');
+  if (!section) return;
+
+  const tag   = section.querySelector('.tag');
+  const titles = section.querySelector('.section-title__titles');
+  const cards  = section.querySelectorAll('.card-case');
+
+  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+  if (tag) {
+    tl.from(tag, { y: 16, opacity: 0, duration: 0.6 });
+  }
+
+  if (titles) {
+    tl.from(titles, { y: 24, opacity: 0, duration: 0.7 }, '-=0.3');
+  }
+
+  if (cards.length) {
+    tl.from(cards, {
+      y: 32,
+      opacity: 0,
+      duration: 0.7,
+      stagger: 0.08,
+    }, '-=0.3');
+  }
+}
+
 /* ── Init ──────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', function() {
+  initProjectsGridPageLoad();
   initWhatWeDoAnimation();
   initProjectsAnimation();
   initServicesAnimation();

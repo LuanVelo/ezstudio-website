@@ -62,34 +62,21 @@
 
 ---
 
-### ⬜ Fase 4 — Páginas (section por section, pixel-perfect)
+### 🔧 Fase 4 — Páginas (section por section, pixel-perfect)
 
 > Fluxo por página: implementar → screenshot Figma → screenshot preview → validar → ✅ aprovar → próxima section
 
-- [ ] **Home** (`index.html`)
-  - [ ] Levantar sections no Figma
-  - [ ] Implementar cada section
-  - [ ] Validação pixel-perfect
-- [ ] **About** (`about.html`)
-  - [ ] Levantar sections no Figma
-  - [ ] Implementar cada section
-  - [ ] Validação pixel-perfect
-- [ ] **Work** (`work.html`)
-  - [ ] Levantar sections no Figma
-  - [ ] Implementar cada section
-  - [ ] Validação pixel-perfect
-- [ ] **Case Template** (`case-template.html`)
-  - [ ] Levantar sections no Figma
-  - [ ] Implementar cada section
-  - [ ] Validação pixel-perfect
-- [ ] **Our Solutions** (`solutions.html`)
-  - [ ] Levantar sections no Figma
-  - [ ] Implementar cada section
-  - [ ] Validação pixel-perfect
-- [ ] **Contact** (`contact.html`)
-  - [ ] Levantar sections no Figma
-  - [ ] Implementar cada section
-  - [ ] Validação pixel-perfect
+- [x] **Home** (`index.html`)
+  - [x] Sections: Hero, What We Do, Latest Works, Services (3 cards), Testimonials, FAQ, Contact CTA
+  - [x] JS/GSAP: slider, carousel, accordion, scroll animations (clip-path, fade-up, stagger)
+- [x] **About** (`about.html`)
+  - [x] Sections: Hero About, Our Process, Who We Are (video), Works List, The Team, Contact CTA
+- [x] **Work** (`work.html`)
+  - [x] Sections: Projects Grid 2×3 com card-case
+- [x] **Contact** (`contact.html`)
+  - [x] Sections: Hero Contact (formulário + details card), FAQ
+- [ ] **Case Template** (`case-template.html`) — ⏸ adiado
+- [ ] **Our Solutions** (`solutions.html`) — ⏸ adiado
 
 ---
 
@@ -228,10 +215,12 @@ Para cada section implementada:
 
 1. **Capturar screenshot** do Figma via MCP (`mcp__Figma__get_screenshot`)
 2. **Implementar** a section em HTML/CSS
-3. **Capturar screenshot** do resultado via preview
-4. **Comparar** os dois lado a lado
-5. **Registrar** no `docs/pixel-perfect-log.md` com status: ✅ Aprovado / 🔧 Ajuste / ❌ Refazer
-6. Só avançar para a próxima section após status **✅**
+3. **Fornecer link de aprovação** — sempre ao final de cada build (página, section ou componente), informar a URL do servidor local: `http://localhost:3000/nome-do-arquivo.html` para o usuário abrir no navegador e aprovar
+4. **Não avançar** para a próxima task sem aprovação explícita do usuário
+5. **Verificação interna** via `preview_screenshot` (complementar — não substitui o link para o usuário)
+6. **Comparar** os dois (Figma vs. preview) lado a lado
+7. **Registrar** no `docs/pixel-perfect-log.md` com status: ✅ Aprovado / 🔧 Ajuste / ❌ Refazer
+8. Só avançar para a próxima section após status **✅**
 
 ---
 
@@ -274,12 +263,12 @@ anim: adiciona scroll animation na section about
 
 | Página              | HTML | CSS | JS/GSAP | Pixel-Perfect |
 |---------------------|------|-----|---------|---------------|
-| Home                | ⬜   | ⬜  | ⬜      | ⬜            |
-| About               | ⬜   | ⬜  | ⬜      | ⬜            |
-| Work                | ⬜   | ⬜  | ⬜      | ⬜            |
-| Case Template       | ⬜   | ⬜  | ⬜      | ⬜            |
-| Our Solutions       | ⬜   | ⬜  | ⬜      | ⬜            |
-| Contact             | ⬜   | ⬜  | ⬜      | ⬜            |
+| Home                | ✅   | ✅  | ✅      | ⬜            |
+| About               | ✅   | ✅  | ✅      | ⬜            |
+| Work                | ✅   | ✅  | —       | ⬜            |
+| Contact             | ✅   | ✅  | ✅      | ⬜            |
+| Case Template       | ⏸   | ⏸  | ⏸      | ⏸            |
+| Our Solutions       | ⏸   | ⏸  | ⏸      | ⏸            |
 
-Legenda: ⬜ Pendente · 🔧 Em progresso · ✅ Aprovado
+Legenda: ⬜ Pendente · 🔧 Em progresso · ✅ Aprovado · — Não se aplica · ⏸ Adiado
 
