@@ -1,0 +1,150 @@
+<!--
+  slider.html — ezstudio
+  Componente: Slider de Cards
+  Figma node: 2-533 · variantes: slider desktop / slider mobile
+  CSS: assets/css/components.css → .slider
+  JS:  assets/js/components.js  → initSlider()
+
+  DEPENDÊNCIA: GSAP (carregado via gsap-init.js)
+
+  ESTRUTURA DOS DADOS:
+  Cada .slider__item precisa de:
+    - data-image: path da imagem
+    - (opcional) .slider__title e .slider__desc para overlay de conteúdo
+-->
+
+<div class="slider" data-slider>
+
+  <!-- Track -->
+  <div class="slider__container">
+    <div class="slider__list">
+
+      <!-- Card 1 -->
+      <article class="slider__item">
+        <figure class="slider__media">
+          <img src="assets/images/slider/slide-1.png" alt="Foam Serum Launch" loading="lazy" />
+        </figure>
+        <div class="slider__content">
+          <div class="slider__titles">
+            <h3 class="slider__title">Foam Serum Launch</h3>
+            <p class="slider__desc">Bubbly physics + product CGI<br>used across hero, ads, and socials.</p>
+          </div>
+        </div>
+        <a class="slider__icon" href="#" aria-label="Ver case: Foam Serum Launch">
+          <svg width="21" height="21" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="slider__item">
+        <figure class="slider__media">
+          <img src="assets/images/slider/slide-2.jpg" alt="" loading="lazy" />
+        </figure>
+        <div class="slider__content"></div>
+        <a class="slider__icon" href="#" aria-label="Ver case">
+          <svg width="21" height="21" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="slider__item">
+        <figure class="slider__media">
+          <img src="assets/images/slider/slide-3.png" alt="Modular Framer Websites" loading="lazy" />
+        </figure>
+        <div class="slider__content">
+          <div class="slider__titles">
+            <h3 class="slider__title">Modular Framer<br>Websites</h3>
+            <p class="slider__desc">Component-driven builds with<br>responsive grids and subtle motion.</p>
+          </div>
+        </div>
+        <a class="slider__icon" href="#" aria-label="Ver case: Modular Framer Websites">
+          <svg width="21" height="21" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="slider__item">
+        <figure class="slider__media">
+          <img src="assets/images/slider/slide-4.jpg" alt="Visual Identity Lab" loading="lazy" />
+        </figure>
+        <div class="slider__content">
+          <div class="slider__titles">
+            <h3 class="slider__title">Visual Identity Lab</h3>
+            <p class="slider__desc">Material-driven identity systems—<br>palette, type, textures, and signature.</p>
+          </div>
+        </div>
+        <a class="slider__icon" href="#" aria-label="Ver case: Visual Identity Lab">
+          <svg width="21" height="21" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="slider__item">
+        <figure class="slider__media">
+          <img src="assets/images/slider/slide-5.jpg" alt="Covers" loading="lazy" />
+        </figure>
+        <div class="slider__content">
+          <div class="slider__titles">
+            <h3 class="slider__title">Covers</h3>
+            <p class="slider__desc">We delivered over 250<br>editorial designs this year</p>
+          </div>
+        </div>
+        <a class="slider__icon" href="#" aria-label="Ver case: Covers">
+          <svg width="21" height="21" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 6 -->
+      <article class="slider__item">
+        <figure class="slider__media">
+          <img src="assets/images/slider/slide-6.jpg" alt="" loading="lazy" />
+        </figure>
+        <div class="slider__content"></div>
+        <a class="slider__icon" href="#" aria-label="Ver case">
+          <svg width="21" height="21" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Card 7 -->
+      <article class="slider__item">
+        <figure class="slider__media">
+          <img src="assets/images/slider/slide-7.jpg" alt="" loading="lazy" />
+        </figure>
+        <div class="slider__content"></div>
+        <a class="slider__icon" href="#" aria-label="Ver case">
+          <svg width="21" height="21" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <div class="slider__controls" aria-label="Controles do slider">
+    <button class="slider__btn slider__btn--prev" aria-label="Slide anterior">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 8H2M2 8L8 14M2 8L8 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <button class="slider__btn slider__btn--next" aria-label="Próximo slide">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </div>
+
+</div>

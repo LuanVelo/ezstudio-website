@@ -1,0 +1,181 @@
+/*
+ * design-system.css — ezstudio Website
+ * Tokens extraídos do Figma: Layout-EZ-Studio (node 1:2)
+ * Fase 2 — Extração de variáveis · 2026-04-14
+ * NÃO editar manualmente — fonte de verdade: Figma
+ */
+
+:root {
+
+  /* ─────────────────────────────────────────
+   * CORES
+   * ───────────────────────────────────────── */
+
+  /* Texto */
+  --color-text-primary:    #1d2029;   /* headlines, body principal, nav, ícones */
+  --color-text-secondary:  #49505d;   /* body descritivo, subtítulos de seção */
+  --color-text-muted:      #49505d;   /* mesmo valor — placeholder para refinamento */
+  --color-text-inverted:   #ffffff;   /* texto sobre fundos escuros */
+  --color-text-on-light:   #f2f4f7;   /* texto sobre cards escuros (carousel labels) */
+
+  /* Backgrounds */
+  --color-bg-primary:      #ffffff;   /* fundo padrão da página */
+  --color-bg-secondary:    #f2f4f7;   /* fundo de cards, tags, seções alternadas */
+  --color-bg-inverted:     #1d2029;   /* fundo de botões escuros, indicadores */
+
+  /* Bordas */
+  --color-border:          rgba(90, 98, 113, 0.5);  /* outlined tags */
+  --color-border-subtle:   rgba(90, 98, 113, 0.2);  /* divisores leves */
+
+  /* Header glassmorphism */
+  --color-header-bg:       rgba(255, 255, 255, 0.06);
+  --color-header-blur:     7.5px;
+
+  /* Gradiente de card (hover/overlay) */
+  --color-card-overlay-from: rgba(29, 32, 41, 0);
+  --color-card-overlay-to:   #1d2029;
+
+
+  /* ─────────────────────────────────────────
+   * TIPOGRAFIA
+   * ───────────────────────────────────────── */
+
+  /* Família */
+  --font-body:    'Inter', sans-serif;
+  --font-display: 'Inter', sans-serif;   /* mesma família — display usa peso maior */
+
+  /* Pesos */
+  --font-weight-regular:    400;
+  --font-weight-medium:     500;
+  --font-weight-semibold:   600;
+
+  /* ── Escala de tamanhos ── */
+
+  /* Hero headline — "Digital products from idea to launch" */
+  --text-display-xl-size:    3.6625rem;   /* 58.6px */
+  --text-display-xl-lh:      4.33rem;     /* 69.3px */
+  --text-display-xl-ls:      -0.1575rem;  /* -2.52px */
+  --text-display-xl-weight:  var(--font-weight-semibold);
+
+  /* Section title grande — "Words from those we helped", "Clear steps..." */
+  --text-display-lg-size:    2.6875rem;   /* 43px */
+  --text-display-lg-lh:      3.23rem;     /* 51.7px */
+  --text-display-lg-ls:      -0.1175rem;  /* -1.88px */
+  --text-display-lg-weight:  var(--font-weight-medium);
+
+  /* Section title médio — "We work on digital products..." */
+  --text-display-md-size:    2.65rem;     /* 42.4px */
+  --text-display-md-lh:      3.23rem;     /* 51.7px */
+  --text-display-md-ls:      -0.1175rem;  /* -1.88px */
+  --text-display-md-weight:  var(--font-weight-medium);
+
+  /* Card / service title — "Product Consulting & Analysis" */
+  --text-display-sm-size:    2.26rem;     /* 36.1px */
+  --text-display-sm-lh:      2.68rem;     /* 42.9px */
+  --text-display-sm-ls:      -0.0975rem;  /* -1.56px */
+  --text-display-sm-weight:  var(--font-weight-medium);
+
+  /* Link CTA / body grande — "Start project" */
+  --text-body-lg-size:       1.13rem;     /* 18.1px */
+  --text-body-lg-lh:         1.625rem;    /* 26px */
+  --text-body-lg-weight:     var(--font-weight-regular);
+
+  /* Body padrão — parágrafos descritivos */
+  --text-body-md-size:       0.9063rem;   /* 14.5px */
+  --text-body-md-lh:         1.3rem;      /* 20.8px */
+  --text-body-md-weight:     var(--font-weight-regular);
+
+  /* Body pequeno / footer info */
+  --text-body-sm-size:       0.75rem;     /* 12px */
+  --text-body-sm-lh:         1.1375rem;   /* 18.2px */
+  --text-body-sm-weight:     var(--font-weight-regular);
+
+  /* Nav links */
+  --text-nav-size:           0.83rem;     /* 13.3px */
+  --text-nav-lh:             0.875rem;    /* 14px */
+  --text-nav-weight:         var(--font-weight-semibold);
+
+  /* Overline / eyebrow tag — "Who we are", "Our solutions" */
+  --text-overline-size:      0.6938rem;   /* 11.1px */
+  --text-overline-lh:        1.2rem;      /* 19.2px */
+  --text-overline-ls:        0.03rem;     /* 0.48px */
+  --text-overline-weight:    var(--font-weight-regular);
+
+  /* Tag label pequeno (testimonial name, footer info) */
+  --text-label-size:         0.7188rem;   /* 11.5px (média dos 11.1–11.9 encontrados) */
+  --text-label-lh:           1.2rem;      /* 19.2px */
+  --text-label-weight:       var(--font-weight-regular);
+
+
+  /* ─────────────────────────────────────────
+   * ESPAÇAMENTO
+   * Escala base 4px
+   * ───────────────────────────────────────── */
+
+  --space-1:   0.25rem;   /*  4px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px — inner padding de cards de serviço */
+  --space-6:   1.5rem;    /* 24px — padding interno de cards (testimonials) */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px — padding horizontal do header */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-32:  8rem;      /* 128px */
+
+  /* Espaçamentos específicos de seção */
+  --section-padding-x:  2.4375rem;   /* 39px — padding horizontal do container */
+  --section-gap:        0;            /* seções sem gap (empilhadas) */
+
+
+  /* ─────────────────────────────────────────
+   * GRID E LAYOUT
+   * ───────────────────────────────────────── */
+
+  --container-max:      1362px;   /* largura interna máxima (1440 - 2×39px) */
+  --container-padding:  2.4375rem; /* 39px — horizontal */
+  --grid-columns:       12;
+  --grid-gap:           1.5rem;    /* 24px */
+  --grid-gap-mobile:    1rem;      /* 16px */
+
+
+  /* ─────────────────────────────────────────
+   * BORDER RADIUS
+   * ───────────────────────────────────────── */
+
+  --radius-xs:    0.4375rem;  /* 7px — indicador dot */
+  --radius-sm:    0.625rem;   /* 10px — section wrapper corners */
+  --radius-md:    0.75rem;    /* 12px — cards, image containers */
+  --radius-lg:    1.125rem;   /* 18px — service section large card */
+  --radius-pill:  6.25rem;    /* 100px — tags, badges, eyebrow pills */
+  --radius-full:  9999px;     /* círculos (avatares, botões ícone) */
+
+
+  /* ─────────────────────────────────────────
+   * SOMBRAS
+   * Nenhuma sombra explícita identificada no Figma.
+   * Valores padrão — revisar em fases futuras.
+   * ───────────────────────────────────────── */
+
+  --shadow-sm:    0 1px 3px rgba(29, 32, 41, 0.06);
+  --shadow-md:    0 4px 16px rgba(29, 32, 41, 0.08);
+  --shadow-lg:    0 16px 48px rgba(29, 32, 41, 0.12);
+
+
+  /* ─────────────────────────────────────────
+   * TRANSIÇÕES E ANIMAÇÕES
+   * ───────────────────────────────────────── */
+
+  --duration-fast:   150ms;
+  --duration-base:   300ms;
+  --duration-slow:   600ms;
+  --duration-xslow:  1000ms;
+
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Botões</title>
+  <link rel="stylesheet" href="assets/css/design-system.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { background: #f2f4f7; padding: 60px 40px; display: flex; flex-direction: column; gap: 40px; }
+    .row { display: flex; align-items: center; gap: 16px; }
+    .label { font-family: monospace; font-size: 11px; color: #888; margin-bottom: 12px; }
+    .dark-bg { background: #1d2029; padding: 40px; border-radius: 12px; }
+  </style>
+</head>
+<body>
+
+  <div>
+    <p class="label">.btn--primary — fundo escuro, texto branco</p>
+    <div class="row">
+      <a class="btn btn--primary" href="#">Get started</a>
+      <a class="btn btn--primary" href="#">Start project</a>
+      <button class="btn btn--primary">Contact us</button>
+    </div>
+  </div>
+
+  <div class="dark-bg">
+    <p class="label" style="color:#aaa">.btn--inverted — fundo branco, texto escuro (uso sobre fundo escuro)</p>
+    <div class="row">
+      <a class="btn btn--inverted" href="#">Get started</a>
+      <button class="btn btn--inverted">Start project</button>
+    </div>
+  </div>
+
+</body>
+</html>

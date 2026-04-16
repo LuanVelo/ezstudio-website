@@ -1,0 +1,1774 @@
+/*
+ * components.css — ezstudio Website
+ * Estilos de componentes reutilizáveis
+ * Depende de: design-system.css, base.css
+ * Fase 3 · 2026-04-14
+ */
+
+
+/* ═══════════════════════════════════════════
+ * SITE HEADER
+ * Variantes controladas por classes JS:
+ *   .is-hidden  — scroll down → header some
+ *   .is-scrolled — scroll up após scroll → variante glass
+ * ═══════════════════════════════════════════ */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 42px;
+
+  /* Glass base — sempre visível */
+  backdrop-filter: blur(var(--color-header-blur));
+  -webkit-backdrop-filter: blur(var(--color-header-blur));
+  background: linear-gradient(
+    to bottom,
+    var(--color-header-bg) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+
+  /* Transição de entrada/saída */
+  transform: translateY(0);
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    opacity var(--duration-slow) var(--ease-out);
+  will-change: transform;
+}
+
+/* ── Variante Scroll: reforça o efeito glass ao reaparecer ── */
+.site-header.is-scrolled {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  /* sutil gradient de borda inferior para separar do conteúdo */
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* ── Hidden: desliza para fora pelo topo ── */
+.site-header.is-hidden {
+  transform: translateY(-100%);
+}
+
+/* ── Inner container ── */
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px var(--space-10); /* 12px 40px */
+  height: 100%;
+}
+
+/* ── Logo ── */
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.site-header__logo img {
+  width: 78px;
+  height: 18px;
+  display: block;
+}
+
+/* ── Desktop Navigation ── */
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-10); /* ~40px entre links */
+}
+
+.site-header__nav-link {
+  font-family: var(--font-body);
+  font-size: var(--text-nav-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--text-nav-lh);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.site-header__nav-link:hover {
+  opacity: 0.6;
+}
+
+.site-header__nav-link.is-active {
+  opacity: 0.4;
+}
+
+/* ── Mobile Menu Button ── */
+.site-header__menu-btn {
+  display: none; /* visível apenas em mobile via media query */
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-nav-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--text-nav-lh);
+  color: var(--color-text-primary);
+}
+
+.site-header__menu-label {
+  display: block;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.site-header__menu-label--close {
+  display: none;
+}
+
+/* Estado aberto: troca Menu → Close */
+.site-header__menu-btn[aria-expanded="true"] .site-header__menu-label--open {
+  display: none;
+}
+
+.site-header__menu-btn[aria-expanded="true"] .site-header__menu-label--close {
+  display: block;
+}
+
+
+/* ═══════════════════════════════════════════
+ * MOBILE MENU OVERLAY
+ * ═══════════════════════════════════════════ */
+
+.mobile-menu {
+  display: none; /* só existe em mobile */
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background-color: var(--color-bg-primary);
+  padding: calc(42px + var(--space-8)) var(--space-5) var(--space-8);
+
+  /* Animação de entrada */
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    opacity var(--duration-base) var(--ease-out),
+    transform var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+
+.mobile-menu.is-open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.mobile-menu__link {
+  font-family: var(--font-body);
+  font-size: var(--text-display-sm-size); /* grande no mobile */
+  font-weight: var(--font-weight-medium);
+  line-height: 1.2;
+  letter-spacing: var(--text-display-sm-ls);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.mobile-menu__link:hover {
+  opacity: 0.5;
+}
+
+
+/* ═══════════════════════════════════════════
+ * RESPONSIVE — Mobile (< 768px)
+ * ═══════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+
+  .site-header__inner {
+    padding: 12px var(--space-5); /* 12px 20px */
+  }
+
+  /* Esconde nav desktop */
+  .site-header__nav {
+    display: none;
+  }
+
+  /* Mostra botão menu */
+  .site-header__menu-btn {
+    display: flex;
+  }
+
+  /* Ativa o overlay mobile */
+  .mobile-menu {
+    display: block;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * SITE FOOTER
+ * ═══════════════════════════════════════════ */
+
+.site-footer {
+  background-color: var(--color-bg-primary);
+  padding-bottom: var(--space-8); /* 32px */
+  overflow: hidden;
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);          /* 12px entre blocos */
+  padding: 56px var(--space-10) 30px; /* 56px 40px 30px */
+  border-radius: var(--radius-md);    /* 12px */
+  overflow: hidden;
+}
+
+/* ── Top: Brand ── */
+.site-footer__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-4) 0;   /* 16px vertical */
+  width: 100%;
+}
+
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);         /* 24px */
+}
+
+.site-footer__logo {
+  display: block;
+  line-height: 0;
+}
+
+.site-footer__logo img {
+  width: 212px;
+  height: 49px;
+  display: block;
+}
+
+.site-footer__tagline {
+  font-size: var(--text-body-md-size);  /* 14.5px */
+  line-height: var(--text-body-md-lh);  /* 20.8px */
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-secondary);
+}
+
+/* ── Media ── */
+.site-footer__media {
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  flex-shrink: 0;
+  height: 607px;
+}
+
+.site-footer__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Bottom Nav ── */
+.site-footer__bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding-top: var(--space-3);
+}
+
+.site-footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.site-footer__contact-line {
+  display: block;
+  font-size: var(--text-body-sm-size);  /* 12px */
+  line-height: var(--text-body-sm-lh);  /* 18.2px */
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+
+a.site-footer__contact-line:hover {
+  opacity: 0.6;
+}
+
+.site-footer__pages,
+.site-footer__legal {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.site-footer__nav-link {
+  display: block;
+  font-size: var(--text-nav-size);       /* 13.3px */
+  line-height: var(--text-nav-lh);       /* 14px */
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.site-footer__nav-link:hover {
+  opacity: 0.5;
+}
+
+.site-footer__nav-link--active {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* ═══════════════════════════════════════════
+ * CTA DESTAQUE
+ * Figma node: 2-672 · variantes: default / mouseover
+ * Animação: seta ↗→ rotate + linha expande
+ * ═══════════════════════════════════════════ */
+
+.cta-destaque {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  /* isola o overflow para a linha não vazar */
+  min-width: 153px;
+}
+
+/* ── Top row: label + icon ── */
+.cta-destaque__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.cta-destaque__label {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg-size);    /* 18.1px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--text-body-lg-lh);    /* 26px */
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* ── Arrow icon ── */
+.cta-destaque__icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  /* default: seta aponta ↗ (rotacionada -45°) */
+  transform: rotate(-45deg);
+  transition: transform var(--duration-base) var(--ease-out);
+  will-change: transform;
+}
+
+.cta-destaque__icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* hover: seta horizontal → */
+.cta-destaque:hover .cta-destaque__icon,
+.cta-destaque:focus-visible .cta-destaque__icon {
+  transform: rotate(0deg);
+}
+
+/* ── Indicator: dot + linha expansível ── */
+.cta-destaque__indicator {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.cta-destaque__dot {
+  width: 3px;
+  height: 3px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+/* wrapper ocupa todo o espaço restante e corta overflow */
+.cta-destaque__line-wrap {
+  flex: 1;
+  overflow: hidden;
+  height: 3px;
+}
+
+/* linha interna: anima de 25px → 100% */
+.cta-destaque__line {
+  display: block;
+  height: 3px;
+  width: 25px;
+  border-radius: 30px;
+  background-color: var(--color-text-primary);
+  transition: width 0.45s var(--ease-out);
+  will-change: width;
+}
+
+.cta-destaque:hover .cta-destaque__line,
+.cta-destaque:focus-visible .cta-destaque__line {
+  width: 100%;
+}
+
+/* ── Variante invertida (fundo escuro) ── */
+.cta-destaque--inverted .cta-destaque__label {
+  color: var(--color-text-inverted);
+}
+
+.cta-destaque--inverted .cta-destaque__dot,
+.cta-destaque--inverted .cta-destaque__line {
+  background-color: var(--color-text-inverted);
+}
+
+
+/* ═══════════════════════════════════════════
+ * SLIDER DE CARDS
+ * Figma node: 2-533 · variantes: desktop / mobile
+ * JS: components.js → initSlider()
+ * ═══════════════════════════════════════════ */
+
+.slider {
+  position: relative;
+  width: 100%;
+  padding: 20px;
+  overflow: hidden;
+}
+
+/* ── Track ── */
+.slider__container {
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.slider__list {
+  display: flex;
+  gap: 10px;
+  will-change: transform;
+  /* cursor drag */
+  cursor: grab;
+  user-select: none;
+}
+
+.slider__list.is-dragging {
+  cursor: grabbing;
+}
+
+/* ── Card ── */
+.slider__item {
+  position: relative;
+  flex-shrink: 0;
+  width: 306px;
+  height: 438px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+}
+
+/* ── Imagem ── */
+.slider__media {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.slider__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Content overlay (visível no hover) ── */
+.slider__content {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(29, 32, 41, 0) 40%,
+    rgba(29, 32, 41, 0.92) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+
+.slider__titles {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.slider__title {
+  font-size: 27.7px;
+  font-weight: var(--font-weight-medium);
+  line-height: 36px;
+  letter-spacing: -0.6px;
+  color: var(--color-text-inverted);
+}
+
+.slider__desc {
+  font-size: 14.4px;
+  line-height: var(--text-body-md-lh);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-on-light);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ── Ícone de link (top-right, mix-blend-difference no + apenas) ── */
+.slider__icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: difference;
+  color: white;
+  flex-shrink: 0;
+  transition: transform var(--duration-base) var(--ease-out);
+  will-change: transform;
+  z-index: 2;
+}
+
+.slider__item.is-open .slider__icon {
+  transform: rotate(45deg);
+}
+
+.slider__item.is-open .slider__content {
+  opacity: 1;
+}
+
+/* ── Botões prev/next ── */
+.slider__controls {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 10;
+}
+
+.slider__btn {
+  pointer-events: all;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-inverted);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  z-index: 10;
+  /* ocultos por padrão no desktop — JS controla via GSAP */
+  opacity: 0;
+}
+
+.slider__btn:disabled {
+  cursor: default;
+}
+
+
+/* ═══════════════════════════════════════════
+ * HERO
+ * Figma node: 2-35
+ * Usa: .cta-destaque + .slider
+ * ═══════════════════════════════════════════ */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+/* ── Content: título + CTA ── */
+.hero__content {
+  flex: 1;
+  min-height: 230px;
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 124px var(--space-10) 36px; /* 124px 40px 36px */
+}
+
+.hero__title {
+  font-size: var(--text-display-xl-size);       /* 58.6px */
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--text-display-xl-lh);       /* 69.3px */
+  letter-spacing: var(--text-display-xl-ls);    /* -2.52px */
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ── CTA position within hero ── */
+.hero__cta {
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+/* ── Slider fills remaining width ── */
+.hero .slider {
+  flex-shrink: 0;
+}
+
+/* ── Hero Responsive — Mobile (< 768px) ── */
+@media (max-width: 767px) {
+  .hero__content {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: var(--space-8);
+    padding: 100px var(--space-5) var(--space-8);
+  }
+
+  .hero__title {
+    font-size: 38px;
+    line-height: 1.18;
+    letter-spacing: -0.04em;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * GLASS BOTTOM
+ * Elemento 100% width × 100px com blur progressivo
+ * Uso: position absolute na borda inferior do pai
+ * (pai precisa de position: relative + overflow: hidden)
+ * ═══════════════════════════════════════════ */
+
+.glass-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 90;
+}
+
+/* ── Camada 1: blur leve (8px) — cobre toda a altura
+   Máscara: transparente → opaco = blur aparece gradualmente ── */
+.glass-bottom::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 100%);
+}
+
+/* ── Camada 2: blur forte (20px) — cobre apenas a metade inferior
+   Combinado com camada 1 cria efeito progressivo real ── */
+.glass-bottom::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 40%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 40%, black 100%);
+}
+
+
+/* ═══════════════════════════════════════════
+ * SLIDER RESPONSIVE — Mobile (< 768px)
+ * ═══════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+  .slider__item {
+    width: calc(100vw - 60px);
+    height: 365px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * BTN — Botão
+ * Figma node: 9-1296
+ * Variantes: .btn--primary (default) · .btn--inverted
+ * ═══════════════════════════════════════════ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  padding: 10px 24px;
+  border-radius: var(--radius-md);    /* 12px */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  /* Tipografia */
+  font-family: var(--font-body);
+  font-size: 1.1625rem;               /* 18.6px */
+  font-weight: var(--font-weight-regular);
+  line-height: 1.625rem;              /* 26px */
+
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+/* ── Primary: fundo escuro, texto branco ── */
+.btn--primary {
+  background-color: var(--color-bg-inverted);  /* #1d2029 */
+  color: var(--color-text-inverted);            /* #ffffff */
+}
+
+.btn--primary:hover,
+.btn--primary:focus-visible {
+  background-color: #35373e;
+}
+
+/* ── Inverted: fundo branco, texto escuro ── */
+.btn--inverted {
+  background-color: var(--color-bg-primary);   /* #ffffff */
+  color: var(--color-text-primary);             /* #1d2029 */
+}
+
+.btn--inverted:hover,
+.btn--inverted:focus-visible {
+  background-color: var(--color-bg-secondary); /* #f2f4f7 */
+}
+
+
+/* ═══════════════════════════════════════════
+ * TAGS / BADGES
+ * Figma node: 3-713
+ * Variantes: header, header-inverted, white, black, ghost, ghost-inverted
+ * ═══════════════════════════════════════════ */
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 12px;
+  border-radius: 100px;
+
+  /* Tipografia */
+  font-family: var(--font-body);
+  font-size: 11.1px;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0.48px;
+  line-height: 19.2px;
+  white-space: nowrap;
+
+  /* Reset */
+  border: 1px solid transparent;
+  cursor: default;
+  user-select: none;
+}
+
+/* ── Indicador (dot) — exclusivo das variantes header ── */
+.tag__indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+
+/* ── Texto ── */
+.tag__text {
+  flex-shrink: 0;
+}
+
+/* ──────────────────────────────────────────
+ * Variante: header (padrão — fundo cinza claro)
+ * ────────────────────────────────────────── */
+.tag--header {
+  background-color: var(--color-bg-secondary); /* #f2f4f7 */
+  color: var(--color-text-primary);            /* #1d2029 */
+}
+
+.tag--header .tag__indicator {
+  background-color: var(--color-text-primary); /* #1d2029 */
+}
+
+/* ──────────────────────────────────────────
+ * Variante: header-inverted (fundo escuro médio)
+ * ────────────────────────────────────────── */
+.tag--header-inverted {
+  background-color: #676a71;
+  color: var(--color-text-on-light); /* #f2f4f7 */
+}
+
+.tag--header-inverted .tag__indicator {
+  background-color: var(--color-text-on-light); /* #f2f4f7 */
+}
+
+/* ──────────────────────────────────────────
+ * Variante: white (fundo branco)
+ * ────────────────────────────────────────── */
+.tag--white {
+  background-color: var(--color-bg-primary); /* #ffffff */
+  color: var(--color-text-primary);          /* #1d2029 */
+}
+
+/* ──────────────────────────────────────────
+ * Variante: black (fundo escuro médio, texto claro)
+ * ────────────────────────────────────────── */
+.tag--black {
+  background-color: #676a71;
+  color: var(--color-text-inverted); /* #ffffff */
+}
+
+/* ──────────────────────────────────────────
+ * Variante: ghost (outlined, border muted)
+ * ────────────────────────────────────────── */
+.tag--ghost {
+  background-color: transparent;
+  border-color: #a7abb3;
+  color: var(--color-text-primary); /* #1d2029 */
+}
+
+/* ──────────────────────────────────────────
+ * Variante: ghost-inverted (outlined branco, p/ fundos escuros)
+ * ────────────────────────────────────────── */
+.tag--ghost-inverted {
+  background-color: transparent;
+  border-color: var(--color-text-inverted); /* #ffffff */
+  color: var(--color-text-inverted);        /* #ffffff */
+}
+
+
+/* ═══════════════════════════════════════════
+ * SECTION TITLE
+ * Figma node: 9-1448
+ * Variantes: --centered / --1col / --2col
+ * ═══════════════════════════════════════════ */
+
+.section-title {
+  width: 100%;
+}
+
+/* ── Centered: tag + títulos centrados, máx 500px ── */
+.section-title--centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
+
+.section-title--centered .section-title__titles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 500px;
+  width: 100%;
+}
+
+/* ── 1col: coluna esquerda, sem CTA ── */
+.section-title--1col {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+/* ── 2col: coluna esquerda + CTA alinhado à base direita ── */
+.section-title--2col {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+/* ── Bloco esquerdo (1col e 2col) ── */
+.section-title__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  max-width: 400px;
+}
+
+
+.section-title__left .section-title__titles {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── Tipografia: H2 ── */
+.section-title__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-display-lg-size);    /* 42.8px */
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-display-lg-lh);    /* 51.7px */
+  letter-spacing: var(--text-display-lg-ls); /* -1.88px */
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ── Tipografia: subtítulo ── */
+.section-title__sub {
+  font-family: var(--font-body);
+  font-size: var(--text-body-md-size);  /* 14.5px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--text-body-md-lh);  /* 20.8px */
+  color: var(--color-text-secondary);
+  max-width: 400px;
+  margin: 0;
+}
+
+/* ── CTA no 2col: alinha à base ── */
+.section-title__cta {
+  flex-shrink: 0;
+  align-self: flex-end;
+}
+
+/* ── Responsive: Mobile (< 768px) ── */
+@media (max-width: 767px) {
+
+  /* Centered: já é coluna, apenas ajusta max-width */
+  .section-title--centered .section-title__titles {
+    max-width: 100%;
+  }
+
+  /* 1col e 2col: coluna no mobile */
+  .section-title--1col,
+  .section-title--2col {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-8); /* 32px */
+  }
+
+  .section-title__left {
+    width: 100%;
+  }
+
+  .section-title__heading {
+    font-size: 2rem;        /* ~32px no mobile */
+    line-height: 1.25;
+    letter-spacing: -0.06em;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * CARD IMAGE
+ * Figma node: 9-1505
+ * Variantes: default / hover
+ * Efeito hover: blur na imagem + overlay backdrop-blur + ícone central
+ * ═══════════════════════════════════════════ */
+
+.card-image {
+  position: relative;
+  border-radius: var(--radius-md); /* 12px */
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* ── Imagem ── */
+.card-image__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 133.33%;
+  top: -16.67%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: var(--radius-md);
+  transition: filter var(--duration-base) var(--ease-out);
+  will-change: filter;
+}
+
+.card-image:hover .card-image__img {
+  filter: blur(2px);
+}
+
+/* ── Overlay hover com backdrop-blur sutil ── */
+.card-image__hover {
+  position: absolute;
+  inset: -1%;
+  border-radius: var(--radius-md);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background-color: rgba(29, 32, 41, 0.08);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--duration-slow) var(--ease-out);
+  will-change: opacity;
+}
+
+.card-image:hover .card-image__hover {
+  opacity: 1;
+}
+
+/* ── Botão ícone central (círculo branco) ── */
+.card-image__icon-btn {
+  width: 100px;
+  height: 100px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0.9) translateY(6px);
+  transition:
+    opacity 0.5s var(--ease-out),
+    transform 0.5s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.card-image:hover .card-image__icon-btn {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.card-image__icon-btn svg {
+  width: 35px;
+  height: 35px;
+  display: block;
+}
+
+
+/* ═══════════════════════════════════════════
+ * CARD CASE
+ * Figma node: 9-1519
+ * Usa: .card-image + conteúdo (título + duração)
+ * ═══════════════════════════════════════════ */
+
+.card-case {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-text-primary);
+}
+
+/* ── Imagem ocupa 100% da largura do card ── */
+.card-case .card-image {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+/* ── Linha de conteúdo abaixo da imagem ── */
+.card-case__content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: var(--space-4) var(--space-3); /* 16px 12px */
+  font-family: var(--font-body);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text-primary);
+}
+
+.card-case__title {
+  flex: 1;
+  font-size: var(--text-body-md-size); /* 14.5px */
+  line-height: var(--text-body-md-lh); /* 20.8px */
+  min-width: 0;
+  margin: 0;
+}
+
+.card-case__meta {
+  flex-shrink: 0;
+  font-size: var(--text-body-md-size); /* 14.5px */
+  line-height: var(--text-body-md-lh); /* 20.8px */
+  white-space: nowrap;
+  margin-left: var(--space-4);
+  color: var(--color-text-secondary);
+}
+
+/* ── Mobile: largura total ── */
+@media (max-width: 767px) {
+  .card-case {
+    width: 100%;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * WHAT WE DO
+ * Figma node: 7-1224
+ * Animação: imagem expande via GSAP clip-path ao rolar
+ * ═══════════════════════════════════════════ */
+
+.what-we-do {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 56px;
+  padding: 128px 40px 40px;
+  background-color: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+/* ── Image wrapper: starts visually clipped, expands on scroll ── */
+.what-we-do__image-wrap {
+  width: 100%;
+  height: 638px;
+  flex-shrink: 0;
+  /* Initial state: 40px inset each side — GSAP animates this to 0 */
+  clip-path: inset(0 40px round 12px);
+  will-change: clip-path;
+}
+
+/* ── Figure: overflow hidden for parallax image ── */
+.what-we-do__figure {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ── Image: oversized height for parallax positioning ── */
+.what-we-do__img {
+  position: absolute;
+  width: 100%;
+  height: 150.58%;
+  top: -25.29%;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Responsive — Mobile (< 768px) ── */
+@media (max-width: 767px) {
+  .what-we-do {
+    padding: 40px 20px;
+    gap: 32px;
+  }
+
+  .what-we-do__image-wrap {
+    height: 320px;
+    /* No inset on mobile — image fills container */
+    clip-path: inset(0 0px round 12px);
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * PROJECTS — Latest Works
+ * Figma node: 11-1560
+ * Layout: section-title--2col + grid 2×2 de card-case
+ * ═══════════════════════════════════════════ */
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 128px 40px 56px;
+  background-color: var(--color-bg-primary);
+}
+
+/* ── Grid 2×2 ── */
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 56px 24px;
+  width: 100%;
+}
+
+/* ── Responsive — Mobile (< 768px) ── */
+@media (max-width: 767px) {
+  .projects {
+    padding: 80px 20px 40px;
+    gap: 40px;
+  }
+
+  .projects__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * SERVICES
+ * Figma node: 11-1817
+ * Layout: section-title--1col + cards empilháveis (sticky)
+ * ═══════════════════════════════════════════ */
+
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 128px 40px 128px;
+  background-color: var(--color-bg-primary);
+  /* Nunca overflow:hidden aqui — quebraria o sticky */
+}
+
+/* ── Container dos cards ── */
+.services__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+
+/* ═══════════════════════════════════════════
+ * SERVICE CARD
+ * Componente reutilizável — sticky stacking
+ * ═══════════════════════════════════════════ */
+
+.service-card {
+  position: sticky;
+  top: 128px;
+  height: 500px;
+  border-radius: 18px;
+  background-color: var(--color-bg-secondary); /* #f2f4f7 */
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Z-index crescente para empilhar corretamente */
+.service-card:nth-child(1) { z-index: 1; }
+.service-card:nth-child(2) { z-index: 2; }
+.service-card:nth-child(3) { z-index: 3; }
+.service-card:nth-child(4) { z-index: 4; }
+
+/* ── Inner: imagem + conteúdo lado a lado ── */
+.service-card__inner {
+  display: flex;
+  height: 100%;
+  padding: 10px;
+  gap: 0;
+}
+
+/* ── Media: ~38% da largura ── */
+.service-card__media {
+  flex: 0 0 38%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 0;
+}
+
+.service-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ── Content: ocupa o restante ── */
+.service-card__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 20px 28px;
+  position: relative;
+}
+
+.service-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── Número: pílula branca ── */
+.service-card__number {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  height: 25px;
+  padding: 0 12px;
+  background-color: var(--color-bg-primary);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.48px;
+  line-height: 1;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+/* ── Heading ── */
+.service-card__heading {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: var(--font-weight-medium);
+  line-height: 42.9px;
+  letter-spacing: -1.56px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ── Body text ── */
+.service-card__body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-md-size); /* 14.5px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--text-body-md-lh);  /* 20.8px */
+  color: #49505d;
+  margin: 0;
+}
+
+/* ── Tags: fundo do card ── */
+.service-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ── Responsive — Mobile (< 768px) ── */
+@media (max-width: 767px) {
+  .services {
+    padding: 80px 20px 80px;
+    gap: 32px;
+  }
+
+  .service-card {
+    position: relative; /* desliga sticky no mobile */
+    top: auto;
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  .service-card__inner {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .service-card__media {
+    flex: none;
+    height: 240px;
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .service-card__content {
+    padding: 20px;
+    gap: 20px;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * TESTIMONIALS
+ * Figma node: 17-2434
+ * Layout: section-title--1col + carousel drag
+ * ═══════════════════════════════════════════ */
+
+.testimonials {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  padding: 64px 40px;
+  background-color: var(--color-bg-primary);
+}
+
+/* ── Carousel wrapper ── */
+.testimonials__carousel {
+  position: relative;
+  width: 100%;
+}
+
+.testimonials__track-wrap {
+  overflow: hidden;
+  padding: 10px 0; /* espaço para a sombra dos cards não cortar */
+}
+
+.testimonials__track {
+  display: flex;
+  gap: 8px;
+  cursor: grab;
+  user-select: none;
+  will-change: transform;
+}
+
+.testimonials__track.is-dragging {
+  cursor: grabbing;
+}
+
+/* ── Controles prev/next: ocultos por padrão, surgem se há overflow ── */
+.testimonials__controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+/* Controles visíveis quando há cards além da largura */
+.testimonials__carousel.has-overflow .testimonials__controls {
+  opacity: 1;
+}
+
+.testimonials__btn {
+  pointer-events: all;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-inverted);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.testimonials__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+
+/* ═══════════════════════════════════════════
+ * TESTIMONIAL CARD
+ * Figma node: 17-2656
+ * Componente reutilizável
+ * ═══════════════════════════════════════════ */
+
+.testimonial-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+  width: 366px;
+  min-width: 300px;
+  max-width: 366px;
+  padding: 20px;
+  background-color: var(--color-bg-secondary); /* #f2f4f7 */
+  border-radius: var(--radius-md);             /* 12px */
+}
+
+/* ── Review: estrelas + quote ── */
+.testimonial-card__review {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+}
+
+.testimonial-card__stars {
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.testimonial-card__quote {
+  font-family: var(--font-body);
+  font-size: 14.8px;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--text-body-md-lh); /* 20.8px */
+  color: var(--color-text-primary);
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Author: avatar + nome + cargo ── */
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.testimonial-card__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  object-position: center;
+  flex-shrink: 0;
+  display: block;
+}
+
+.testimonial-card__author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.testimonial-card__author-name {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 10.9px;
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0.48px;
+  line-height: 19.2px;
+  color: var(--color-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.testimonial-card__author-role {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: var(--font-weight-regular);
+  line-height: 18.2px;
+  color: #49505d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Responsive — Mobile (< 768px) ── */
+@media (max-width: 767px) {
+  .testimonials {
+    padding: 64px 20px;
+    gap: 40px;
+  }
+
+  .testimonial-card {
+    width: calc(100vw - 60px);
+    min-width: calc(100vw - 60px);
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * FAQ SECTION
+ * Figma node: 18-2831
+ * Layout: 2 colunas — left (heading) + right (accordion)
+ * ═══════════════════════════════════════════ */
+
+.faq-section {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 128px 40px;
+  background-color: var(--color-bg-primary);
+}
+
+/* ── Left: tag + heading ── */
+.faq-section__left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  width: 320px;
+  flex-shrink: 0;
+}
+
+.faq-section__heading {
+  font-family: var(--font-display);
+  font-size: var(--text-display-lg-size);    /* 42.8px */
+  font-weight: var(--font-weight-medium);
+  line-height: var(--text-display-lg-lh);    /* 51.7px */
+  letter-spacing: var(--text-display-lg-ls); /* -1.88px */
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ── Right: list of FAQ items ── */
+.faq-section__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 540px;
+  flex-shrink: 0;
+}
+
+
+/* ═══════════════════════════════════════════
+ * FAQ ITEM — Componente accordion
+ * Figma node: 9-1323
+ * Estados: default (fechado) / .is-open (aberto)
+ * ═══════════════════════════════════════════ */
+
+.faq-item {
+  background-color: var(--color-bg-secondary); /* #f2f4f7 */
+  border-radius: var(--radius-md);             /* 12px */
+  overflow: hidden;
+}
+
+/* ── Header: pergunta + ícone ── */
+.faq-item__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 16px;
+}
+
+.faq-item__question {
+  font-family: var(--font-body);
+  font-size: var(--text-body-md-size); /* 14.5px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--text-body-md-lh);
+  color: var(--color-text-primary);
+}
+
+/* ── Ícone: chevron que roda 180° ao abrir ── */
+.faq-item__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  transition: transform var(--duration-base) var(--ease-out);
+  will-change: transform;
+}
+
+.faq-item.is-open .faq-item__icon {
+  transform: rotate(180deg);
+}
+
+/* ── Body: resposta com animação de altura ── */
+.faq-item__body {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.is-open .faq-item__body {
+  max-height: 400px; /* valor alto o suficiente para qualquer resposta */
+}
+
+.faq-item__answer {
+  padding: 0 24px 24px;
+  font-family: var(--font-body);
+  font-size: 14.8px;
+  font-weight: var(--font-weight-regular);
+  line-height: var(--text-body-md-lh); /* 20.8px */
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+/* ── Responsive — Mobile (< 768px) ── */
+@media (max-width: 767px) {
+  .faq-section {
+    flex-direction: column;
+    gap: 48px;
+    padding: 80px 20px;
+  }
+
+  .faq-section__left {
+    width: 100%;
+  }
+
+  .faq-section__list {
+    width: 100%;
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * CONTACT CTA SECTION
+ * Figma node: 19-2888
+ * ═══════════════════════════════════════════ */
+
+.section-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 128px 40px;
+  background-color: var(--color-bg-primary); /* #ffffff */
+}
+
+/* ── Responsive — Mobile (< 768px) ── */
+@media (max-width: 767px) {
+  .section-contact {
+    padding: 80px var(--space-5);
+  }
+}
+
+
+/* ═══════════════════════════════════════════
+ * FOOTER RESPONSIVE — Mobile (< 768px)
+ * ═══════════════════════════════════════════ */
+
+@media (max-width: 767px) {
+
+  .site-footer__inner {
+    padding: 56px var(--space-5) 30px;
+  }
+
+  .site-footer__media {
+    height: 305px;
+  }
+
+  .site-footer__bottom {
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .site-footer__contact {
+    flex: 1 0 100%;
+  }
+
+  .site-footer__pages,
+  .site-footer__legal {
+    flex: 1 0 0;
+  }
+}

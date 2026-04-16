@@ -1,0 +1,139 @@
+/*
+ * animations.css — ezstudio Website
+ * Classes utilitárias de animação: CSS transitions + hooks para GSAP
+ * Depende de: design-system.css
+ * Fase 2 · 2026-04-14
+ *
+ * Convenção de hooks GSAP:
+ *   data-gsap="fade-in"        → fade de baixo para cima
+ *   data-gsap="fade-up"        → slide up com fade
+ *   data-gsap="fade-left"      → slide da direita com fade
+ *   data-gsap="stagger"        → grupo com stagger controlado
+ *   data-gsap="reveal"         → clip-path reveal (horizontal ou vertical)
+ *   data-gsap="scale-in"       → scale de 0.9 para 1 com fade
+ *   data-gsap="counter"        → contagem numérica (stats)
+ *   data-gsap="parallax"       → efeito parallax no scroll
+ */
+
+/* ─────────────────────────────────────────
+ * ESTADO INICIAL — elementos aguardando animação GSAP
+ * GSAP vai remover estas classes / definir os valores via JS
+ * ───────────────────────────────────────── */
+
+[data-gsap] {
+  will-change: transform, opacity;
+}
+
+/* Elementos ocultos antes do GSAP inicializar (evita flash) */
+[data-gsap="fade-in"],
+[data-gsap="fade-up"],
+[data-gsap="fade-left"],
+[data-gsap="scale-in"] {
+  opacity: 0;
+}
+
+/* ─────────────────────────────────────────
+ * CSS TRANSITIONS PURAS
+ * Para interações que não precisam de GSAP
+ * ───────────────────────────────────────── */
+
+/* Transição padrão — aplicar em elementos interativos */
+.transition {
+  transition: all var(--duration-base) var(--ease-default);
+}
+
+.transition-fast {
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.transition-slow {
+  transition: all var(--duration-slow) var(--ease-out);
+}
+
+/* Transições específicas */
+.transition-opacity  { transition: opacity var(--duration-base) var(--ease-out); }
+.transition-transform { transition: transform var(--duration-base) var(--ease-out); }
+.transition-colors   {
+  transition:
+    color var(--duration-base) var(--ease-out),
+    background-color var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+/* ─────────────────────────────────────────
+ * HOVER STATES CSS
+ * ───────────────────────────────────────── */
+
+/* Hover em links de navegação */
+.nav-link {
+  position: relative;
+  transition: opacity var(--duration-fast) var(--ease-out);
+}
+
+.nav-link:hover {
+  opacity: 0.6;
+}
+
+/* Hover em cards */
+.card {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+/* Hover overlay de card de imagem */
+.card__overlay {
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.card:hover .card__overlay {
+  opacity: 1;
+}
+
+/* Hover em botão link (underline animado) */
+.btn--link .btn__underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.btn--link:hover .btn__underline {
+  transform: scaleX(1);
+}
+
+/* ─────────────────────────────────────────
+ * PAGE LOAD — classe aplicada ao body após load
+ * ───────────────────────────────────────── */
+
+body.is-loaded [data-gsap] {
+  /* GSAP gerencia a partir daqui */
+}
+
+/* Previne animações em usuários que preferem movimento reduzido */
+@media (prefers-reduced-motion: reduce) {
+  [data-gsap] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .transition,
+  .transition-fast,
+  .transition-slow,
+  .transition-opacity,
+  .transition-transform,
+  .transition-colors,
+  .card,
+  .nav-link {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,138 @@
+/*
+ * layout.css — ezstudio Website
+ * Grid, container e breakpoints
+ * Depende de: design-system.css
+ * Fase 2 · 2026-04-14
+ */
+
+/* ─────────────────────────────────────────
+ * CONTAINER
+ * Max-width: 1362px (1440 - 2×39px)
+ * Padding lateral: 39px
+ * ───────────────────────────────────────── */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--container-max) + var(--container-padding) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding);
+}
+
+/* Container fluido — sem max-width */
+.container--fluid {
+  width: 100%;
+  padding-inline: var(--container-padding);
+}
+
+/* ─────────────────────────────────────────
+ * GRID
+ * 12 colunas, gap 24px
+ * ───────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: var(--grid-gap);
+}
+
+/* Variantes de colunas comuns */
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* Column span helpers */
+.col-1  { grid-column: span 1; }
+.col-2  { grid-column: span 2; }
+.col-3  { grid-column: span 3; }
+.col-4  { grid-column: span 4; }
+.col-5  { grid-column: span 5; }
+.col-6  { grid-column: span 6; }
+.col-7  { grid-column: span 7; }
+.col-8  { grid-column: span 8; }
+.col-9  { grid-column: span 9; }
+.col-10 { grid-column: span 10; }
+.col-11 { grid-column: span 11; }
+.col-12 { grid-column: span 12; }
+
+/* ─────────────────────────────────────────
+ * FLEX HELPERS
+ * ───────────────────────────────────────── */
+
+.flex         { display: flex; }
+.flex-col     { flex-direction: column; }
+.flex-center  { align-items: center; justify-content: center; }
+.flex-between { align-items: center; justify-content: space-between; }
+.flex-wrap    { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.items-start  { align-items: flex-start; }
+.items-end    { align-items: flex-end; }
+
+/* ─────────────────────────────────────────
+ * SECTION WRAPPER
+ * ───────────────────────────────────────── */
+
+.section {
+  width: 100%;
+  position: relative;
+}
+
+/* ─────────────────────────────────────────
+ * BREAKPOINTS
+ * Mobile-first: base → tablet → desktop
+ *
+ * --bp-mobile:     375px
+ * --bp-tablet:     768px
+ * --bp-desktop-md: 1024px
+ * --bp-desktop-lg: 1440px
+ * --bp-desktop-xl: 1920px
+ * ───────────────────────────────────────── */
+
+/* Tablet ≥ 768px */
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-10);   /* 40px */
+  }
+
+  .grid {
+    gap: var(--grid-gap);
+  }
+
+  /* Grid responsivo tablet */
+  .grid--2-tablet { grid-template-columns: repeat(2, 1fr); }
+  .grid--3-tablet { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Desktop MD ≥ 1024px */
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--container-padding);   /* 39px */
+  }
+}
+
+/* Desktop LG ≥ 1440px */
+@media (min-width: 1440px) {
+  .grid {
+    gap: var(--grid-gap);
+  }
+}
+
+/* ─────────────────────────────────────────
+ * UTILITÁRIOS DE ESPAÇAMENTO
+ * ───────────────────────────────────────── */
+
+.mt-auto { margin-top: auto; }
+.mb-auto { margin-bottom: auto; }
+.ml-auto { margin-left: auto; }
+.mr-auto { margin-right: auto; }
+.mx-auto { margin-inline: auto; }
+
+/* Gap helpers para flex/grid */
+.gap-1  { gap: var(--space-1); }
+.gap-2  { gap: var(--space-2); }
+.gap-3  { gap: var(--space-3); }
+.gap-4  { gap: var(--space-4); }
+.gap-5  { gap: var(--space-5); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
+.gap-10 { gap: var(--space-10); }
+.gap-12 { gap: var(--space-12); }

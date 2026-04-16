@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Slider</title>
+  <link rel="stylesheet" href="assets/css/design-system.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { background: #f2f4f7; padding: 60px 0; }
+    .label { font-size: 11px; color: #888; margin: 0 20px 12px; font-family: monospace; }
+  </style>
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body>
+
+  <p class="label">slider desktop — hover nos cards para ver overlay · arraste ou use os botões</p>
+
+  <div class="slider" data-slider>
+    <div class="slider__container">
+      <div class="slider__list">
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-1.png" alt="Foam Serum Launch" />
+          </figure>
+          <div class="slider__content">
+            <div class="slider__titles">
+              <h3 class="slider__title">Foam Serum Launch</h3>
+              <p class="slider__desc">Bubbly physics + product CGI<br>used across hero, ads, and socials.</p>
+            </div>
+          </div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-2.jpg" alt="" />
+          </figure>
+          <div class="slider__content"></div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-3.png" alt="Modular Framer Websites" />
+          </figure>
+          <div class="slider__content">
+            <div class="slider__titles">
+              <h3 class="slider__title">Modular Framer<br>Websites</h3>
+              <p class="slider__desc">Component-driven builds with<br>responsive grids and subtle motion.</p>
+            </div>
+          </div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-4.jpg" alt="Visual Identity Lab" />
+          </figure>
+          <div class="slider__content">
+            <div class="slider__titles">
+              <h3 class="slider__title">Visual Identity Lab</h3>
+              <p class="slider__desc">Material-driven identity systems—<br>palette, type, textures, and signature.</p>
+            </div>
+          </div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-5.jpg" alt="Covers" />
+          </figure>
+          <div class="slider__content">
+            <div class="slider__titles">
+              <h3 class="slider__title">Covers</h3>
+              <p class="slider__desc">We delivered over 250<br>editorial designs this year</p>
+            </div>
+          </div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-6.jpg" alt="" />
+          </figure>
+          <div class="slider__content"></div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-7.jpg" alt="" />
+          </figure>
+          <div class="slider__content"></div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="slider__controls">
+      <button class="slider__btn slider__btn--prev" aria-label="Anterior">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8H2M2 8L8 14M2 8L8 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="slider__btn slider__btn--next" aria-label="Próximo">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <script src="assets/js/components.js"></script>
+</body>
+</html>

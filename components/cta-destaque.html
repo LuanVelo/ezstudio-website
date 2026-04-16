@@ -1,0 +1,33 @@
+<!--
+  cta-destaque.html — ezstudio
+  Componente: CTA Destaque (call to action com hover animation)
+  Figma node: 2-672 · variantes: default / mouseover
+  CSS: assets/css/components.css → .cta-destaque
+
+  USO:
+    <a class="cta-destaque" href="contact.html">
+      ... (ver estrutura abaixo)
+    </a>
+
+  VARIANTE INVERTIDA (fundo escuro):
+    Adicione os estilos inline de cor conforme o exemplo abaixo,
+    ou crie .cta-destaque--inverted se necessário.
+-->
+
+<!-- Variante padrão (fundo claro) -->
+<a class="cta-destaque" href="contact.html">
+  <div class="cta-destaque__top">
+    <span class="cta-destaque__label">Start project</span>
+    <span class="cta-destaque__icon" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 9H16M16 9L9 2M16 9L9 16" stroke="#1d2029" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </div>
+  <div class="cta-destaque__indicator" aria-hidden="true">
+    <span class="cta-destaque__dot"></span>
+    <span class="cta-destaque__line-wrap">
+      <span class="cta-destaque__line"></span>
+    </span>
+  </div>
+</a>

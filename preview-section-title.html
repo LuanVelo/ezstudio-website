@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Section Title</title>
+  <link rel="stylesheet" href="assets/css/design-system.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background: #f2f4f7;
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* ── Cabeçalho do preview ── */
+    .preview-header {
+      margin-bottom: 40px;
+    }
+    .preview-header h1 {
+      font-family: monospace;
+      font-size: 13px;
+      color: #1d2029;
+      margin: 0 0 4px;
+    }
+    .preview-header p {
+      font-family: monospace;
+      font-size: 11px;
+      color: #999;
+      margin: 0;
+    }
+
+    /* ── Bloco de cada variante ── */
+    .variant {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .variant__label {
+      font-family: monospace;
+      font-size: 10px;
+      color: #aaa;
+      background: #e8eaed;
+      padding: 6px 12px;
+      border-radius: 6px 6px 0 0;
+      width: fit-content;
+    }
+
+    .variant__stage {
+      background: #ffffff;
+      padding: 56px 39px;
+      border-radius: 0 12px 12px 12px;
+    }
+
+    .variant__stage--dark {
+      background: #1d2029;
+    }
+
+    /* ── Divisor de seção ── */
+    .section-label {
+      font-family: monospace;
+      font-size: 10px;
+      color: #bbb;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 24px 0 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="preview-header">
+    <h1>Section Title — Componente</h1>
+    <p>Figma node: 9-1448 · 3 variantes: centered / 1col / 2col</p>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       VARIANTE: Centered
+  ══════════════════════════════════════ -->
+  <p class="section-label">Centered</p>
+
+  <div class="variant">
+    <span class="variant__label">.section-title--centered · fundo claro</span>
+    <div class="variant__stage">
+      <div class="section-title section-title--centered">
+        <span class="tag tag--header">
+          <span class="tag__indicator"></span>
+          <span class="tag__text">Who we are</span>
+        </span>
+        <div class="section-title__titles">
+          <h2 class="section-title__heading">We design digital products<br>that people actually use</h2>
+          <p class="section-title__sub">This includes structure, interface and implementation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="variant">
+    <span class="variant__label">.section-title--centered · fundo escuro (tag--header-inverted)</span>
+    <div class="variant__stage variant__stage--dark">
+      <div class="section-title section-title--centered">
+        <span class="tag tag--header-inverted">
+          <span class="tag__indicator"></span>
+          <span class="tag__text">Who we are</span>
+        </span>
+        <div class="section-title__titles">
+          <h2 class="section-title__heading" style="color:#ffffff">We design digital products<br>that people actually use</h2>
+          <p class="section-title__sub" style="color:rgba(255,255,255,0.5)">This includes structure, interface and implementation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       VARIANTE: 1 Column
+  ══════════════════════════════════════ -->
+  <p class="section-label">1 Column</p>
+
+  <div class="variant">
+    <span class="variant__label">.section-title--1col</span>
+    <div class="variant__stage">
+      <div class="section-title section-title--1col">
+        <div class="section-title__left">
+          <span class="tag tag--header">
+            <span class="tag__indicator"></span>
+            <span class="tag__text">Our work</span>
+          </span>
+          <div class="section-title__titles">
+            <h2 class="section-title__heading">Selected cases</h2>
+            <p class="section-title__sub">Case studies that highlight our process and results</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════
+       VARIANTE: 2 Columns
+  ══════════════════════════════════════ -->
+  <p class="section-label">2 Columns (com CTA)</p>
+
+  <div class="variant">
+    <span class="variant__label">.section-title--2col</span>
+    <div class="variant__stage">
+      <div class="section-title section-title--2col">
+        <div class="section-title__left">
+          <span class="tag tag--header">
+            <span class="tag__indicator"></span>
+            <span class="tag__text">Our work</span>
+          </span>
+          <div class="section-title__titles">
+            <h2 class="section-title__heading">Selected cases</h2>
+            <p class="section-title__sub">Case studies that highlight our process and results</p>
+          </div>
+        </div>
+
+        <a class="cta-destaque section-title__cta" href="#">
+          <div class="cta-destaque__top">
+            <span class="cta-destaque__label">Start project</span>
+            <span class="cta-destaque__icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 9H16M16 9L9 2M16 9L9 16" stroke="#1d2029" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </div>
+          <div class="cta-destaque__indicator" aria-hidden="true">
+            <span class="cta-destaque__dot"></span>
+            <span class="cta-destaque__line-wrap">
+              <span class="cta-destaque__line"></span>
+            </span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Glass Bottom</title>
+  <link rel="stylesheet" href="assets/css/design-system.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <style>
+    body { margin: 0; background: #f2f4f7; }
+
+    /* Container de teste — imagem de fundo + glass overlay */
+    .test-block {
+      position: relative;
+      width: 100%;
+      height: 500px;
+      overflow: hidden;
+    }
+
+    .test-block img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .label {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-family: monospace;
+      font-size: 11px;
+      color: white;
+      background: rgba(0,0,0,0.4);
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="test-block">
+    <img src="assets/images/slider/slide-1.png" alt="" />
+    <span class="label">glass-bottom → blur 0→8px + 0→20px combinados</span>
+
+    <!-- Componente -->
+    <div class="glass-bottom" aria-hidden="true"></div>
+  </div>
+
+  <div class="test-block" style="margin-top: 2px;">
+    <img src="assets/images/slider/slide-4.jpg" alt="" />
+    <span class="label">glass-bottom sobre imagem escura</span>
+    <div class="glass-bottom" aria-hidden="true"></div>
+  </div>
+
+</body>
+</html>

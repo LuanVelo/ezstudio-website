@@ -1,0 +1,54 @@
+<!--
+  header.html — ezstudio
+  Componente: Site Header
+  Variantes: Desktop (padrão) · Scroll (auto) · Mobile (responsive)
+  JS: assets/js/components.js → initHeader()
+  CSS: assets/css/components.css → .site-header
+-->
+
+<header class="site-header" id="site-header" role="banner">
+  <div class="site-header__inner">
+
+    <!-- Logo -->
+    <a href="index.html" class="site-header__logo" aria-label="ezstudio – Voltar para Home">
+      <img
+        src="assets/images/logo.png"
+        alt="ezstudio"
+        width="78"
+        height="18"
+      />
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="site-header__nav" aria-label="Navegação principal">
+      <a href="index.html"     class="site-header__nav-link">Home</a>
+      <a href="about.html"     class="site-header__nav-link">About</a>
+      <a href="work.html"      class="site-header__nav-link">Works</a>
+      <a href="solutions.html" class="site-header__nav-link">Our solutions</a>
+      <a href="contact.html"   class="site-header__nav-link">Contact</a>
+    </nav>
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="site-header__menu-btn"
+      id="mobile-menu-btn"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="site-header__menu-label site-header__menu-label--open">Menu</span>
+      <span class="site-header__menu-label site-header__menu-label--close">Close</span>
+    </button>
+
+  </div>
+</header>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Menu de navegação">
+  <nav class="mobile-menu__nav" aria-label="Navegação mobile">
+    <a href="index.html"     class="mobile-menu__link">Home</a>
+    <a href="about.html"     class="mobile-menu__link">About</a>
+    <a href="work.html"      class="mobile-menu__link">Works</a>
+    <a href="solutions.html" class="mobile-menu__link">Our solutions</a>
+    <a href="contact.html"   class="mobile-menu__link">Contact</a>
+  </nav>
+</div>

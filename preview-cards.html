@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview — Cards · ezstudio</title>
+  <link rel="stylesheet" href="assets/css/design-system.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+  <style>
+    body {
+      background-color: #f2f4f7;
+      padding: 60px 40px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .preview-section {
+      margin-bottom: 80px;
+    }
+
+    .preview-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #49505d;
+      margin: 0 0 24px 0;
+    }
+
+    .preview-row {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    /* Restringe a largura para desktop — como no Figma */
+    .card-case {
+      width: 669px;
+    }
+
+    /* Fundo branco para testar card-image standalone */
+    .preview-bg-white {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 12px;
+    }
+
+    /* Demo: card-image em tamanho menor para side-by-side */
+    .card-image--demo {
+      width: 320px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════
+       1. CARD IMAGE — Standalone
+       Hover para ver o efeito
+       ══════════════════════════════ -->
+  <div class="preview-section">
+    <p class="preview-label">Card Image — Hover para ver efeito (Figma 9-1505)</p>
+    <div class="preview-row preview-bg-white">
+
+      <!-- Card com imagem real do Figma asset -->
+      <div class="card-image card-image--demo">
+        <img
+          class="card-image__img"
+          src="https://www.figma.com/api/mcp/asset/7bdd990b-3f4e-4d56-9d26-22c3f3fb6fe8"
+          alt="Case project"
+          width="669"
+          height="669"
+        />
+        <div class="card-image__hover" aria-hidden="true">
+          <div class="card-image__icon-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" fill="none" aria-hidden="true">
+              <path d="M6.5 17.5H28.5M28.5 17.5L20 9M28.5 17.5L20 26" stroke="#1d2029" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segundo card para comparação -->
+      <div class="card-image card-image--demo">
+        <img
+          class="card-image__img"
+          src="https://www.figma.com/api/mcp/asset/7bdd990b-3f4e-4d56-9d26-22c3f3fb6fe8"
+          alt="Case project 2"
+          width="669"
+          height="669"
+        />
+        <div class="card-image__hover" aria-hidden="true">
+          <div class="card-image__icon-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" fill="none" aria-hidden="true">
+              <path d="M6.5 17.5H28.5M28.5 17.5L20 9M28.5 17.5L20 26" stroke="#1d2029" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       2. CARD CASE — Full width (669px)
+       ══════════════════════════════ -->
+  <div class="preview-section">
+    <p class="preview-label">Card Case — Hover para ver efeito (Figma 9-1519)</p>
+    <div class="preview-row">
+
+      <a class="card-case" href="#">
+        <div class="card-image">
+          <img
+            class="card-image__img"
+            src="https://www.figma.com/api/mcp/asset/7bdd990b-3f4e-4d56-9d26-22c3f3fb6fe8"
+            alt="Nuvio – Personal Financial Management"
+            width="669"
+            height="669"
+          />
+          <div class="card-image__hover" aria-hidden="true">
+            <div class="card-image__icon-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" fill="none" aria-hidden="true">
+                <path d="M6.5 17.5H28.5M28.5 17.5L20 9M28.5 17.5L20 26" stroke="#1d2029" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-case__content">
+          <p class="card-case__title">Nuvio - Personal Financial Management (Concept Project)</p>
+          <span class="card-case__meta">4 weeks</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════
+       3. DOIS CARDS SIDE-BY-SIDE
+       (como seria numa grid de work)
+       ══════════════════════════════ -->
+  <div class="preview-section">
+    <p class="preview-label">2 Cards — Layout de grid (Work page)</p>
+    <div class="preview-row" style="gap: 16px;">
+
+      <a class="card-case" href="#" style="width: calc(50% - 8px);">
+        <div class="card-image">
+          <img
+            class="card-image__img"
+            src="https://www.figma.com/api/mcp/asset/7bdd990b-3f4e-4d56-9d26-22c3f3fb6fe8"
+            alt="Nuvio – Personal Financial Management"
+            width="669"
+            height="669"
+          />
+          <div class="card-image__hover" aria-hidden="true">
+            <div class="card-image__icon-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" fill="none" aria-hidden="true">
+                <path d="M6.5 17.5H28.5M28.5 17.5L20 9M28.5 17.5L20 26" stroke="#1d2029" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-case__content">
+          <p class="card-case__title">Nuvio - Personal Financial Management (Concept Project)</p>
+          <span class="card-case__meta">4 weeks</span>
+        </div>
+      </a>
+
+      <a class="card-case" href="#" style="width: calc(50% - 8px);">
+        <div class="card-image">
+          <img
+            class="card-image__img"
+            src="https://www.figma.com/api/mcp/asset/7bdd990b-3f4e-4d56-9d26-22c3f3fb6fe8"
+            alt="Case Project Two"
+            width="669"
+            height="669"
+          />
+          <div class="card-image__hover" aria-hidden="true">
+            <div class="card-image__icon-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" fill="none" aria-hidden="true">
+                <path d="M6.5 17.5H28.5M28.5 17.5L20 9M28.5 17.5L20 26" stroke="#1d2029" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="card-case__content">
+          <p class="card-case__title">Ezstudio - Brand Identity & Web Design</p>
+          <span class="card-case__meta">6 weeks</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+</body>
+</html>

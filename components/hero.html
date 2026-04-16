@@ -1,0 +1,151 @@
+<!--
+  hero.html — ezstudio
+  Componente: Hero Section (Home)
+  Figma node: 2-35
+  CSS: assets/css/components.css → .hero
+  JS:  assets/js/components.js  → initSlider()
+
+  Usa os componentes:
+    .cta-destaque  (components/cta-destaque.html)
+    .slider        (components/slider.html)
+-->
+
+<section class="hero" id="hero" aria-label="Hero">
+
+  <!-- Content: título + CTA -->
+  <div class="hero__content">
+
+    <h1 class="hero__title">
+      Digital products<br>
+      from idea to launch
+    </h1>
+
+    <!-- CTA Destaque -->
+    <a class="cta-destaque hero__cta" href="contact.html">
+      <div class="cta-destaque__top">
+        <span class="cta-destaque__label">Start project</span>
+        <span class="cta-destaque__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 9H16M16 9L9 2M16 9L9 16" stroke="#1d2029" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+      <div class="cta-destaque__indicator" aria-hidden="true">
+        <span class="cta-destaque__dot"></span>
+        <span class="cta-destaque__line-wrap">
+          <span class="cta-destaque__line"></span>
+        </span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- Slider -->
+  <div class="slider" data-slider>
+    <div class="slider__container">
+      <div class="slider__list">
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-1.png" alt="Foam Serum Launch" loading="eager" />
+          </figure>
+          <div class="slider__content">
+            <div class="slider__titles">
+              <h3 class="slider__title">Foam Serum Launch</h3>
+              <p class="slider__desc">Bubbly physics + product CGI<br>used across hero, ads, and socials.</p>
+            </div>
+          </div>
+          <a class="slider__icon" href="#" aria-label="Ver case: Foam Serum Launch">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-2.jpg" alt="" loading="lazy" />
+          </figure>
+          <div class="slider__content"></div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-3.png" alt="Modular Framer Websites" loading="lazy" />
+          </figure>
+          <div class="slider__content">
+            <div class="slider__titles">
+              <h3 class="slider__title">Modular Framer<br>Websites</h3>
+              <p class="slider__desc">Component-driven builds with<br>responsive grids and subtle motion.</p>
+            </div>
+          </div>
+          <a class="slider__icon" href="#" aria-label="Ver case: Modular Framer Websites">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-4.jpg" alt="Visual Identity Lab" loading="lazy" />
+          </figure>
+          <div class="slider__content">
+            <div class="slider__titles">
+              <h3 class="slider__title">Visual Identity Lab</h3>
+              <p class="slider__desc">Material-driven identity systems—<br>palette, type, textures, and signature.</p>
+            </div>
+          </div>
+          <a class="slider__icon" href="#" aria-label="Ver case: Visual Identity Lab">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-5.jpg" alt="Covers" loading="lazy" />
+          </figure>
+          <div class="slider__content">
+            <div class="slider__titles">
+              <h3 class="slider__title">Covers</h3>
+              <p class="slider__desc">We delivered over 250<br>editorial designs this year</p>
+            </div>
+          </div>
+          <a class="slider__icon" href="#" aria-label="Ver case: Covers">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-6.jpg" alt="" loading="lazy" />
+          </figure>
+          <div class="slider__content"></div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+        <article class="slider__item">
+          <figure class="slider__media">
+            <img src="assets/images/slider/slide-7.jpg" alt="" loading="lazy" />
+          </figure>
+          <div class="slider__content"></div>
+          <a class="slider__icon" href="#" aria-label="Ver case">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="slider__controls">
+      <button class="slider__btn slider__btn--prev" aria-label="Anterior">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M14 8H2M2 8L8 14M2 8L8 2" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="slider__btn slider__btn--next" aria-label="Próximo">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8H14M14 8L8 2M14 8L8 14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+</section>
