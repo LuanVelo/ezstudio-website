@@ -109,14 +109,30 @@ Só avança para a próxima seção após aprovação ✅
 
 ---
 
+## Componentes Globais
+
+Componentes reutilizáveis implementados e prontos para uso em qualquer página:
+
+| Componente | Arquivo | Variantes |
+|------------|---------|-----------|
+| Header / Nav | `components/header.html` | Menu mobile, scroll behavior |
+| Footer | `components/footer.html` | — |
+| CTA Destaque | `components/cta-destaque.html` | Default, inverted |
+| Botões | `components/button.html` | Primary, inverted |
+| Section Title | `components/section-title.html` | Centered, 1col, 2col com CTA |
+| Cards | `components/card-image.html` + `card-case.html` | Image, Case |
+| Tags / Badges | `components/tags.html` | 6 variantes (header, white, black, ghost…) |
+
+---
+
 ## Fases do Projeto
 
 | Fase | Descrição | Status |
 |------|-----------|--------|
 | 1 | Fundação — estrutura, docs, config | ✅ Concluído |
-| 2 | Design System — tokens do Figma | ⬜ Pendente |
-| 3 | Componentes Globais — header, footer, cards | ⬜ Pendente |
-| 4 | Páginas — section por section | ⬜ Pendente |
+| 2 | Design System — tokens extraídos do Figma | ✅ Concluído |
+| 3 | Componentes Globais — header, footer, cards, CTAs | ✅ Concluído |
+| 4 | Páginas — section por section, pixel-perfect | 🔧 Em andamento |
 | 5 | Animações GSAP | ⬜ Pendente |
 | 6 | Responsividade & QA | ⬜ Pendente |
 | 7 | Migração para Framework | ⬜ Futuro |
