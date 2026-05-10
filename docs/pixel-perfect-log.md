@@ -192,3 +192,61 @@
 | Content (422px) + Slider (478px) = 900px = 100vh | ✅ |
 
 ---
+
+## Fase 4 — Páginas
+
+### Case Template (`case-template.html`)
+- **Data:** 2026-05-10
+- **Figma nodes:** `56-1116` (Hero) · `56-1230` (Text Case) · `56-1270` (Image Grid)
+- **Arquivo:** `case-template.html`
+- **Status:** ✅ Aprovado
+
+#### S01 — Hero Case (node `56-1116`)
+
+| Elemento | Figma | Implementado | Status |
+|----------|-------|--------------|--------|
+| Heading font-size | 59.2px | 59.2px | ✅ |
+| Heading font-weight | semibold 600 | 600 | ✅ |
+| Heading letter-spacing | -2.52px | -2.52px | ✅ |
+| Heading line-height | 69.3px | 69.28px | ✅ |
+| Sub font-size | 18.1px | `--text-body-lg-size` 18.1px | ✅ |
+| Detail labels | 11.1px uppercase tracking 0.48px | `--text-overline-size` | ✅ |
+| Detail values | 14.8px | 14.8px | ✅ |
+| CTA "View website" | direita, bottom-aligned | reutiliza `.cta-destaque` | ✅ |
+| Hero image height | 681px | 681px | ✅ |
+| Hero image border-radius | 12px | 12px | ✅ |
+| Gap header → imagem | 49px | 3.0625rem | ✅ |
+| Padding topo | 64px | `var(--space-16)` | ✅ |
+
+#### S02 — Text Case (node `56-1230`)
+
+Estrutura fixa: **Overview · Soluções · Métricas**
+
+| Elemento | Figma | Implementado | Status |
+|----------|-------|--------------|--------|
+| Título font-size | 35.8px | 36.16px (`--text-display-sm-size`) | ✅ |
+| Título font-weight | medium 500 | 500 | ✅ |
+| Título letter-spacing | -1.56px | -1.56px | ✅ |
+| Body font-size | 18.4px | 1.15rem | ✅ |
+| Body line-height | 26px | 26px | ✅ |
+| Bloco max-width | 650px | 650px | ✅ |
+| Gap bloco → bloco | 44px | 2.75rem | ✅ |
+| Gap título → body | 44px | 2.75rem | ✅ |
+
+#### S03 — Image Grid (node `56-1270`)
+
+Layout: **2 halves · 1 full (1:1) · 2 halves · 2 halves** = 7 slots
+
+| Elemento | Figma | Implementado | Status |
+|----------|-------|--------------|--------|
+| Item half width | 676px | 675px `calc(50% - 5px)` | ✅ |
+| Item full width | 1362px | 100% | ✅ |
+| Aspect-ratio | 1/1 | 1/1 | ✅ |
+| Gap | 10px | 10px | ✅ |
+| Border-radius | 12px | 12px | ✅ |
+| Background | `#f0f1f3` | `--color-bg-secondary` | ✅ |
+
+#### S04 — Contact CTA · S05 — Header + Footer
+- Reutilizam os componentes padrão sem alterações
+
+---

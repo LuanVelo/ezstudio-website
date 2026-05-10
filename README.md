@@ -19,14 +19,14 @@ Site institucional da ezstudio, desenvolvido com HTML5 semântico, CSS customiza
 
 ## Páginas
 
-| Arquivo | Página |
-|---------|--------|
-| `index.html` | Home |
-| `about.html` | About |
-| `work.html` | Work |
-| `case-template.html` | Case Template |
-| `solutions.html` | Our Solutions |
-| `contact.html` | Contact |
+| Arquivo | Página | Status |
+|---------|--------|--------|
+| `index.html` | Home | ✅ Implementado |
+| `about.html` | About | ✅ Implementado |
+| `work.html` | Work | ✅ Implementado |
+| `case-template.html` | Case Template | ✅ Implementado |
+| `contact.html` | Contact | ✅ Implementado |
+| `solutions.html` | Our Solutions | ⏸ Adiado |
 
 ---
 
@@ -38,7 +38,6 @@ website/
 ├── about.html
 ├── work.html
 ├── case-template.html
-├── solutions.html
 ├── contact.html
 │
 ├── assets/
@@ -61,6 +60,16 @@ website/
 │   ├── header.html
 │   ├── footer.html
 │   └── ...
+│
+├── preview/                    ← Páginas de teste de componentes isolados
+│   ├── preview-btn.html
+│   ├── preview-cards.html
+│   ├── preview-cta.html
+│   ├── preview-footer.html
+│   ├── preview-glass-bottom.html
+│   ├── preview-hero.html
+│   ├── preview-section-title.html
+│   └── preview-slider.html
 │
 └── docs/
     ├── design-system.md        ← Documentação dos tokens
@@ -132,7 +141,7 @@ Componentes reutilizáveis implementados e prontos para uso em qualquer página:
 | 1 | Fundação — estrutura, docs, config | ✅ Concluído |
 | 2 | Design System — tokens extraídos do Figma | ✅ Concluído |
 | 3 | Componentes Globais — header, footer, cards, CTAs | ✅ Concluído |
-| 4 | Páginas — section por section, pixel-perfect | 🔧 Em andamento |
+| 4 | Páginas — Home, About, Work, Case Template, Contact | ✅ Concluído |
 | 5 | Animações GSAP | ⬜ Pendente |
 | 6 | Responsividade & QA | ⬜ Pendente |
 | 7 | Migração para Framework | ⬜ Futuro |
