@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Claude Code worktrees (gerados automaticamente, não versionar)
+.claude/worktrees/
+
+# Pastas de assets brutos dos cases (só images/ vai para o repo)
+cases/*/images base/
+
+# Dependências
+node_modules/
+
+# Env
+.env
+.env.local
