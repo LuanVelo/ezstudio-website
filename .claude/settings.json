@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "WorktreeCreate": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"continue\": false, \"stopReason\": \"Worktrees desabilitados neste projeto. Trabalhe diretamente em website/. Use worktree apenas se pedido explicitamente pelo usuário.\"}'",
+            "statusMessage": "Bloqueando criação de worktree..."
+          }
+        ]
+      }
+    ]
+  }
+}
