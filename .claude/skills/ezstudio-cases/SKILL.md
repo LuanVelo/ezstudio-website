@@ -61,31 +61,30 @@ Se o .md não existir: criar um template vazio e avisar o usuário para preench�
 
 ### Regras de nomenclatura
 
-**NUNCA usar imagens de fora da pasta `cases/<nome>/images/`** — exceto se o usuário pedir explicitamente.
+**TRABALHAR EXCLUSIVAMENTE com arquivos dentro de `cases/<nome>/images/`.**
+- Nunca ler, copiar ou renomear arquivos de `images base/` ou qualquer outra pasta
+- `images base/` é área do usuário — não tocar, mesmo que contenha imagens
+- Se o usuário quiser usar imagens de `images base/`, ele mesmo move para `images/`
 
-Varredura da pasta `<projeto>/cases/<nome>/images/`:
+Varredura de `<projeto>/cases/<nome>/images/`:
 
-1. **Identificar imagens por função:**
-   - Arquivo com "hero" no nome → renomear para `hero.png` (ou manter extensão original)
-   - Arquivo com "thumb" no nome → renomear para `thumb_case.png`
-   - Demais arquivos → renomear para `grid-1.ext`, `grid-2.ext`, etc. (ordem alfabética original)
-
-2. **Normalizar nomes problemáticos** (aplicar ANTES de renomear por função):
+1. **Normalizar nomes problemáticos** (renomear com `mv` no diretório fonte):
    - Espaços → hífens: `grid 1.png` → `grid-1.png`
-   - Caracteres especiais (acentos, parênteses, etc.) → remover ou substituir por hífen
+   - Caracteres especiais/acentos/parênteses → remover ou substituir por hífen
    - Letras maiúsculas → minúsculas
-   - Usar `mv` para renomear no diretório fonte
+   - Exemplo: `mv "Arquivo Nome.png" "arquivo-nome.png"`
 
-3. **Pasta com nome errado** (ex: `images base/` com espaço):
-   - Copiar conteúdo para `images/` com nomes normalizados
-   - NÃO deletar a pasta original
+2. **Identificar imagens por função** (após normalização):
+   - Arquivo com "hero" no nome → já está correto como `hero.png`
+   - Arquivo com "thumb" no nome → já está correto como `thumb_case.png`
+   - Demais arquivos → renomear para `grid-1.ext`, `grid-2.ext`, etc. (ordem alfabética)
 
-### Exemplo de renomeação em bash
+### Exemplo de normalização em bash
 
 ```bash
 BASE="<projeto>/cases/<nome>/images"
-# Renomeia com espaços
 for f in "$BASE"/*; do
+  [ -f "$f" ] || continue
   novo=$(basename "$f" | tr ' ' '-' | tr '[:upper:]' '[:lower:]' | sed 's/[^a-z0-9._-]//g')
   [ "$(basename "$f")" != "$novo" ] && mv "$f" "$BASE/$novo"
 done
