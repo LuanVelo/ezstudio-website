@@ -4,8 +4,9 @@
     {
       "name": "Live Server (npx)",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["live-server", ".", "--port=3000", "--no-browser"],
-      "port": 3000
+      "runtimeArgs": ["live-server", ".", "--no-browser"],
+      "port": 3000,
+      "autoPort": true
     },
     {
       "name": "Python HTTP Server",

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caio Fonseca Advocacia — ezstudio</title>
+
+  <!-- Design System -->
+  <link rel="stylesheet" href="../assets/css/design-system.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+  <link rel="stylesheet" href="../assets/css/animations.css" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ═══════════════════════════════════════════
+     * CASE — Caio Fonseca Advocacia
+     * Seções: hero-case · text-case · case-grid
+     * ═══════════════════════════════════════════ */
+
+
+    /* ─────────────────────────────────────────
+     * S01 — Hero Case
+     * ───────────────────────────────────────── */
+
+    .hero-case {
+      background: var(--color-bg-primary);
+      padding-top: var(--space-16);
+      padding-left: var(--space-10);
+      padding-right: var(--space-10);
+      display: flex;
+      flex-direction: column;
+      gap: 3.0625rem;
+    }
+
+    .hero-case__header {
+      display: flex;
+      align-items: flex-end;
+      width: 100%;
+    }
+
+    .hero-case__left {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-16);
+    }
+
+    .hero-case__text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+
+    .hero-case__heading {
+      font-family: var(--font-display);
+      font-size: 3.7rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 4.33rem;
+      letter-spacing: -0.1575rem;
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+
+    .hero-case__sub {
+      font-family: var(--font-body);
+      font-size: var(--text-body-lg-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--text-body-lg-lh);
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+    .hero-case__details {
+      display: flex;
+      gap: var(--space-8);
+      align-items: flex-start;
+    }
+
+    .hero-case__detail {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .hero-case__detail-label {
+      font-family: var(--font-body);
+      font-size: var(--text-overline-size);
+      font-weight: var(--font-weight-regular);
+      line-height: var(--text-overline-lh);
+      letter-spacing: var(--text-overline-ls);
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+    }
+
+    .hero-case__detail-value {
+      font-family: var(--font-body);
+      font-size: 0.925rem;
+      font-weight: var(--font-weight-regular);
+      line-height: 1.3rem;
+      color: var(--color-text-primary);
+    }
+
+    .hero-case__image-wrap {
+      width: 100%;
+      height: 681px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--color-bg-secondary);
+    }
+
+    .hero-case__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+
+    /* ─────────────────────────────────────────
+     * S02 — Text Case
+     * ───────────────────────────────────────── */
+
+    .text-case {
+      background: var(--color-bg-primary);
+      padding: var(--space-16) var(--space-10);
+      display: flex;
+      flex-direction: column;
+      gap: 2.75rem;
+    }
+
+    .text-case__block {
+      display: flex;
+      flex-direction: column;
+      gap: 2.75rem;
+      max-width: 650px;
+    }
+
+    .text-case__title {
+      font-family: var(--font-display);
+      font-size: var(--text-display-sm-size);
+      font-weight: var(--font-weight-medium);
+      line-height: var(--text-display-sm-lh);
+      letter-spacing: var(--text-display-sm-ls);
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+
+    .text-case__body {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      font-weight: var(--font-weight-regular);
+      line-height: 1.625rem;
+      color: var(--color-text-secondary);
+      margin: 0;
+    }
+
+
+    /* ─────────────────────────────────────────
+     * S03 — Image Grid
+     * ───────────────────────────────────────── */
+
+    .case-grid {
+      background: var(--color-bg-primary);
+      padding: var(--space-16) var(--space-10);
+    }
+
+    .case-grid__grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+    }
+
+    .case-grid__item {
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--color-bg-secondary);
+      flex-shrink: 0;
+    }
+
+    .case-grid__item--half {
+      width: calc(50% - 5px);
+      aspect-ratio: 1 / 1;
+    }
+
+    .case-grid__item--full {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+    }
+
+    /* Imagem horizontal: largura total, altura proporcional */
+    .case-grid__item--landscape {
+      width: 100%;
+      aspect-ratio: auto;
+      height: auto;
+    }
+
+    .case-grid__item--landscape img {
+      width: 100%;
+      height: auto;
+      object-fit: unset;
+      display: block;
+    }
+
+    /* Slot sem imagem: oculto */
+    .case-grid__item--empty {
+      display: none;
+    }
+
+
+    /* ─────────────────────────────────────────
+     * Responsividade
+     * ───────────────────────────────────────── */
+
+    @media (max-width: 768px) {
+
+      .hero-case {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+        gap: 2rem;
+      }
+
+      .hero-case__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2rem;
+      }
+
+      .hero-case__heading {
+        font-size: 2rem;
+        line-height: 2.5rem;
+        letter-spacing: -0.08rem;
+      }
+
+      .hero-case__image-wrap {
+        height: 260px;
+      }
+
+      .hero-case__details {
+        flex-wrap: wrap;
+        gap: 1.25rem;
+      }
+
+      .text-case {
+        padding: var(--space-12) 1.25rem;
+      }
+
+      .text-case__block {
+        max-width: 100%;
+      }
+
+      .text-case__title {
+        font-size: 1.75rem;
+      }
+
+      .case-grid {
+        padding: var(--space-12) 1.25rem;
+      }
+
+      .case-grid__item--half,
+      .case-grid__item--full {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Header ─── -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="site-header__inner">
+      <a href="../index.html" class="site-header__logo" aria-label="ezstudio – Home">
+        <img src="../assets/images/logo.png" alt="ezstudio" width="78" height="18" />
+      </a>
+      <nav class="site-header__nav" aria-label="Navegação principal">
+        <a href="../index.html"     class="site-header__nav-link">Home</a>
+        <a href="../about.html"     class="site-header__nav-link">About</a>
+        <a href="../work.html"      class="site-header__nav-link site-header__nav-link--active">Works</a>
+        <a href="../solutions.html" class="site-header__nav-link">Our solutions</a>
+        <a href="../contact.html"   class="site-header__nav-link">Contact</a>
+      </nav>
+      <button class="site-header__menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="site-header__menu-label site-header__menu-label--open">Menu</span>
+        <span class="site-header__menu-label site-header__menu-label--close">Close</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Menu de navegação">
+    <nav class="mobile-menu__nav" aria-label="Navegação mobile">
+      <a href="../index.html"     class="mobile-menu__link">Home</a>
+      <a href="../about.html"     class="mobile-menu__link">About</a>
+      <a href="../work.html"      class="mobile-menu__link">Works</a>
+      <a href="../solutions.html" class="mobile-menu__link">Our solutions</a>
+      <a href="../contact.html"   class="mobile-menu__link">Contact</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ═══════════════════════════════════════
+         S01 — Hero Case
+         ═══════════════════════════════════════ -->
+    <section class="hero-case" id="hero-case" aria-label="Case hero">
+
+      <div class="hero-case__header">
+
+        <div class="hero-case__left">
+
+          <div class="hero-case__text">
+            <h1 class="hero-case__heading">Caio Fonseca Advocacia</h1>
+            <p class="hero-case__sub">
+              Como montamos a identidade web digital para um escritório<br>
+              moderno que atende clientes de alto padrão
+            </p>
+          </div>
+
+          <div class="hero-case__details">
+            <div class="hero-case__detail">
+              <span class="hero-case__detail-label">Duration</span>
+              <span class="hero-case__detail-value">4 semanas</span>
+            </div>
+            <div class="hero-case__detail">
+              <span class="hero-case__detail-label">Industry</span>
+              <span class="hero-case__detail-value">Serviço</span>
+            </div>
+            <div class="hero-case__detail">
+              <span class="hero-case__detail-label">Client</span>
+              <span class="hero-case__detail-value">Caio Fonseca Advocacia</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- CTA Destaque -->
+        <a class="cta-destaque" href="#" aria-label="View website">
+          <div class="cta-destaque__top">
+            <span class="cta-destaque__label">View website</span>
+            <div class="cta-destaque__icon" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 15H25M25 15L15 5M25 15L15 25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <div class="cta-destaque__indicator" aria-hidden="true">
+            <span class="cta-destaque__dot"></span>
+            <span class="cta-destaque__line"></span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Imagem hero -->
+      <div class="hero-case__image-wrap">
+        <img
+          class="hero-case__image"
+          src="caiofonseca/images/hero.png"
+          alt="Caio Fonseca Advocacia — Website"
+          width="1362" height="681"
+          loading="eager"
+        />
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         S02 — Text Case
+         ═══════════════════════════════════════ -->
+    <section class="text-case" id="text-case" aria-label="Case description">
+
+      <div class="text-case__block">
+        <h2 class="text-case__title">Overview</h2>
+        <p class="text-case__body">Um escritório de direito é, geralmente, um website institucional sem muita personalidade, mas nosso cliente queria algo que tivesse usabilidade de alto nível e comunicasse com clientes de alto padrão. O resultado é um website moderno, clean e alinhado ao seu nicho.</p>
+      </div>
+
+      <div class="text-case__block">
+        <h2 class="text-case__title">Solução</h2>
+        <p class="text-case__body">O desafio principal era criar uma página institucional que fosse capaz de criar conexão e diferenciação entre o tipo de cliente do escritório. Em um mercado tão competitivo e tantos projetos similares, ter direção visual e comunicação direcionada para o nicho é um desafio.</p>
+      </div>
+
+      <div class="text-case__block">
+        <h2 class="text-case__title">Números</h2>
+        <p class="text-case__body">Em apenas 4 semanas trabalhamos na identidade, construimos o Design System do projeto, páginas e fizemos o handoff para desenvolvimento. Metodologia interna torna viável fazer o projeto em prazos curtos, times enxutos e criar handoff para desenvolvimento em tempo recorde.</p>
+      </div>
+
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         S03 — Image Grid
+         ═══════════════════════════════════════ -->
+    <section class="case-grid" id="case-grid" aria-label="Project images">
+      <div class="case-grid__grid">
+
+        <!-- Row 1: 2 × half -->
+        <div class="case-grid__item case-grid__item--half">
+          <img src="caiofonseca/images/grid-1.png" alt="Caio Fonseca Advocacia — imagem 1" width="676" height="676" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+        <div class="case-grid__item case-grid__item--half">
+          <img src="caiofonseca/images/grid-2.png" alt="Caio Fonseca Advocacia — imagem 2" width="676" height="676" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+
+        <!-- Row 2: 1 × full -->
+        <div class="case-grid__item case-grid__item--full">
+          <img src="caiofonseca/images/grid-3.png" alt="Caio Fonseca Advocacia — imagem 3" width="1362" height="1362" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        </div>
+
+        <!-- Row 3: 2 × half — aguardando imagens -->
+        <div class="case-grid__item case-grid__item--half"></div>
+        <div class="case-grid__item case-grid__item--half"></div>
+
+        <!-- Row 4: 2 × half — aguardando imagens -->
+        <div class="case-grid__item case-grid__item--half"></div>
+        <div class="case-grid__item case-grid__item--half"></div>
+
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+         S04 — Contact CTA
+         ═══════════════════════════════════════ -->
+    <section class="section-contact" id="contact-cta" aria-label="Contact">
+
+      <div class="section-title section-title--centered">
+        <div class="section-title__tags">
+          <span class="tag tag--header">
+            <span class="tag__indicator"></span>
+            <span class="tag__text">Free 45-min intro call</span>
+          </span>
+        </div>
+        <div class="section-title__titles">
+          <h2 class="section-title__heading">Tell us what<br>you're building</h2>
+          <p class="section-title__sub">We can help define, design and build it.</p>
+        </div>
+      </div>
+
+      <a href="../contact.html" class="btn btn--primary">Book now</a>
+
+    </section>
+
+  </main>
+
+
+  <!-- ═══════════════════════════════════════
+       Footer
+       ═══════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <div class="site-footer__brand">
+          <a href="../index.html" class="site-footer__logo" aria-label="ezstudio – Home">
+            <img src="../assets/images/logo-footer.png" alt="ezstudio Design Studio" width="212" height="49" />
+          </a>
+          <p class="site-footer__tagline">
+            Creative engineering<br>
+            for thoughtful brands
+          </p>
+        </div>
+      </div>
+      <div class="site-footer__media" aria-hidden="true">
+        <img src="../assets/images/footer-bg.jpg" alt="" width="1362" height="607" />
+      </div>
+      <div class="site-footer__bottom">
+        <div class="site-footer__contact">
+          <span class="site-footer__contact-line">Rio de Janeiro, RJ - Brazil</span>
+          <a href="mailto:contact@ez3studio.com" class="site-footer__contact-line">contact@ez3studio.com</a>
+        </div>
+        <nav class="site-footer__pages" aria-label="Páginas">
+          <a href="../index.html"  class="site-footer__nav-link">Home</a>
+          <a href="../about.html"  class="site-footer__nav-link">About</a>
+        </nav>
+        <nav class="site-footer__legal" aria-label="Mais páginas">
+          <a href="../work.html"    class="site-footer__nav-link site-footer__nav-link--active">Works</a>
+          <a href="../contact.html" class="site-footer__nav-link">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <div class="glass-bottom" aria-hidden="true"></div>
+
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="../assets/js/gsap-init.js"></script>
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/animations.js"></script>
+  <script>
+    document.querySelectorAll('.case-grid__item').forEach(item => {
+      const img = item.querySelector('img');
+      if (!img) {
+        item.classList.add('case-grid__item--empty');
+        return;
+      }
+      const applyLayout = () => {
+        if (img.naturalWidth > img.naturalHeight) {
+          item.classList.remove('case-grid__item--half', 'case-grid__item--full');
+          item.classList.add('case-grid__item--landscape');
+        }
+      };
+      if (img.complete && img.naturalWidth) {
+        applyLayout();
+      } else {
+        img.addEventListener('load', applyLayout);
+      }
+    });
+  </script>
+
+</body>
+</html>

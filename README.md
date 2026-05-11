@@ -30,6 +30,94 @@ Site institucional da ezstudio, desenvolvido com HTML5 semântico, CSS customiza
 
 ---
 
+## Cases
+
+Cada case do portfólio vive em `cases/<nomecliente>/` com a seguinte estrutura:
+
+```
+cases/
+└── caiofonseca/
+    ├── caiofonseca.md          ← dados do case (título, textos, detalhes)
+    └── images/
+        ├── hero.png            ← imagem principal do case
+        ├── thumb_case.png      ← thumbnail usada no card de work.html
+        ├── grid-1.png          ← imagens do grid (landscape ou portrait)
+        └── grid-N.png
+```
+
+### Convenções de imagem
+
+| Nome | Uso |
+|------|-----|
+| `hero.png` | Banner principal no topo da página de case |
+| `thumb_case.png` | Thumbnail no card de `work.html` |
+| `grid-N.ext` | Galeria de imagens do case |
+
+- Imagem **landscape** (largura > altura) → exibida em largura total, altura proporcional
+- Imagem **portrait / quadrada** → exibida em 50% da largura, cortada em quadrado
+- Slot **sem imagem** → oculto automaticamente
+
+### Formato do arquivo `.md`
+
+```markdown
+## HERO
+- Título principal Hero: Nome do Cliente
+- Texto secundário hero: Subtítulo do projeto
+- Duração: X semanas
+- Industria: Segmento
+- Cliente: Nome do Cliente
+
+## Overview
+- Descrição geral do projeto
+
+## Solução
+- O que foi feito e como
+
+## Números
+- Resultados e métricas
+```
+
+---
+
+## Skill: `/ezstudio-cases`
+
+Skill de automação para gerenciar o pipeline completo de pages de case. Disponível apenas neste projeto (`.claude/skills/ezstudio-cases/`).
+
+### O que ela faz
+
+1. **Escaneia** todas as pastas em `cases/`
+2. **Lê o `.md`** de cada case e extrai título, subtítulo, duração, indústria, cliente e os 3 blocos de texto
+3. **Normaliza imagens** — remove espaços, caracteres especiais e converte para minúsculas
+4. **Renomeia por função** — identifica `hero`, `thumb_case` e `grid-N` automaticamente
+5. **Sincroniza** imagens para o worktree ativo
+6. **Detecta** cases novos (sem HTML) vs. existentes (apenas sincroniza imagens)
+7. **Gera o HTML** de cases novos com orientação de imagem auto-detectada via JS
+8. **Atualiza `work.html`** inserindo o card do case usando `thumb_case.png`
+9. **Inicia o servidor** e fornece as URLs para aprovação
+
+### Como usar
+
+```
+/ezstudio-cases
+```
+
+Ou em linguagem natural:
+- `"tem um novo case, processa tudo"`
+- `"checar os cases"`
+- `"gerar página do case X"`
+- `"sincronizar cases"`
+
+### Fluxo para adicionar um novo case
+
+1. Criar `cases/<nomecliente>/` no projeto
+2. Adicionar `<nomecliente>.md` com os dados
+3. Colocar as imagens em `images/` (qualquer nome — a skill normaliza)
+4. Incluir `thumb_case.png` para aparecer no card de `work.html`
+5. Rodar `/ezstudio-cases`
+6. Aprovar as URLs fornecidas
+
+---
+
 ## Estrutura do Projeto
 
 ```
@@ -39,6 +127,14 @@ website/
 ├── work.html
 ├── case-template.html
 ├── contact.html
+│
+├── cases/                      ← Páginas de case geradas pela skill
+│   ├── caiofonseca.html
+│   ├── caiofonseca/
+│   │   └── images/             ← hero.png · thumb_case.png · grid-N.png
+│   ├── dateahome.html
+│   └── dateahome/
+│       └── images/
 │
 ├── assets/
 │   ├── css/
@@ -71,9 +167,14 @@ website/
 │   ├── preview-section-title.html
 │   └── preview-slider.html
 │
-└── docs/
-    ├── design-system.md        ← Documentação dos tokens
-    └── pixel-perfect-log.md    ← Log de validações por seção
+├── docs/
+│   ├── design-system.md        ← Documentação dos tokens
+│   └── pixel-perfect-log.md    ← Log de validações por seção
+│
+└── .claude/
+    └── skills/
+        └── ezstudio-cases/     ← Skill de automação de cases
+            └── SKILL.md
 ```
 
 ---
