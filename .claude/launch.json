@@ -4,7 +4,7 @@
     {
       "name": "Live Server (npx)",
       "runtimeExecutable": "npx",
-      "runtimeArgs": ["live-server", ".", "--no-browser"],
+      "runtimeArgs": ["live-server", "/Users/luancarneiro/Library/CloudStorage/GoogleDrive-luan@velodigital.com.br/My Drive/Design Lab/Claude testing/ezstudio/website", "--no-browser"],
       "port": 3000,
       "autoPort": true
     },
