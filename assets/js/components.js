@@ -409,6 +409,200 @@ function initFaqAccordion() {
   });
 }
 
+/* ═══════════════════════════════════════════
+ * CONTACT FORM
+ * Validação client-side + envio via Formspree
+ *
+ * ⚙️  CONFIGURAÇÃO:
+ *   1. Acesse formspree.io e crie um formulário gratuito
+ *   2. Substitua o valor de FORMSPREE_ENDPOINT pelo endpoint gerado
+ *      ex: 'https://formspree.io/f/abcdefgh'
+ * ═══════════════════════════════════════════ */
+
+function initContactForm() {
+  var form = document.querySelector('.contact-form');
+  if (!form) return;
+
+  var submitBtn = form.querySelector('.contact-form__submit');
+
+  // ↓ Substitua pelo seu endpoint Formspree
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/mnjwebqw';
+
+  // ── Mensagens de erro por campo ──────────────
+  var ERROR_MSGS = {
+    name:    { empty: 'Nome é obrigatório', short: 'Mínimo 2 caracteres' },
+    email:   { empty: 'E-mail é obrigatório', invalid: 'E-mail inválido' },
+    message: { empty: 'Mensagem é obrigatória', short: 'Mínimo 10 caracteres' }
+  };
+
+  function isValidEmail(val) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  }
+
+  // ── Exibe erro em um .contact-form__field ────
+  function setFieldError(fieldEl, msg) {
+    fieldEl.classList.add('has-error');
+    var errEl = fieldEl.querySelector('.contact-form__error-msg');
+    if (!errEl) {
+      errEl = document.createElement('span');
+      errEl.className = 'contact-form__error-msg';
+      errEl.setAttribute('role', 'alert');
+      fieldEl.appendChild(errEl);
+    }
+    errEl.textContent = msg;
+  }
+
+  // ── Remove erro de um campo ──────────────────
+  function clearFieldError(fieldEl) {
+    fieldEl.classList.remove('has-error');
+    var errEl = fieldEl.querySelector('.contact-form__error-msg');
+    if (errEl) errEl.remove();
+  }
+
+  // ── Valida um campo individual ────────────────
+  function validateField(fieldEl) {
+    var input = fieldEl.querySelector('input, textarea');
+    if (!input) return true;
+
+    var name = input.name;
+    var val  = input.value.trim();
+    var msgs = ERROR_MSGS[name] || {};
+
+    if (!val) {
+      setFieldError(fieldEl, msgs.empty || 'Campo obrigatório');
+      return false;
+    }
+    if (name === 'email' && !isValidEmail(val)) {
+      setFieldError(fieldEl, msgs.invalid);
+      return false;
+    }
+    if (name === 'name' && val.length < 2) {
+      setFieldError(fieldEl, msgs.short);
+      return false;
+    }
+    if (name === 'message' && val.length < 10) {
+      setFieldError(fieldEl, msgs.short);
+      return false;
+    }
+
+    clearFieldError(fieldEl);
+    return true;
+  }
+
+  // ── Validação em tempo real ───────────────────
+  form.querySelectorAll('.contact-form__field').forEach(function(fieldEl) {
+    var input = fieldEl.querySelector('input, textarea');
+    if (!input) return;
+
+    // Valida ao sair do campo (blur)
+    input.addEventListener('blur', function() {
+      validateField(fieldEl);
+    });
+
+    // Limpa erro enquanto digita (após primeiro erro)
+    input.addEventListener('input', function() {
+      if (fieldEl.classList.contains('has-error')) {
+        validateField(fieldEl);
+      }
+    });
+  });
+
+  // ── Estado de loading ─────────────────────────
+  function setLoading(active) {
+    if (active) {
+      submitBtn.classList.add('is-loading');
+      submitBtn.disabled = true;
+    } else {
+      submitBtn.classList.remove('is-loading');
+      submitBtn.disabled = false;
+    }
+  }
+
+  // ── Exibe erro global (falha de rede / servidor) ──
+  function showGlobalError(msg) {
+    var errEl = form.querySelector('.contact-form__global-error');
+    if (!errEl) {
+      errEl = document.createElement('p');
+      errEl.className = 'contact-form__global-error';
+      errEl.setAttribute('role', 'alert');
+      form.insertBefore(errEl, form.firstChild);
+    }
+    errEl.textContent = msg;
+    errEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function clearGlobalError() {
+    var errEl = form.querySelector('.contact-form__global-error');
+    if (errEl) errEl.remove();
+  }
+
+  // ── Exibe estado de sucesso ───────────────────
+  function showSuccess() {
+    var wrap = form.closest('.contact-form-wrap');
+    if (!wrap) return;
+    wrap.innerHTML =
+      '<div class="contact-success" role="status" aria-live="polite">' +
+        '<span class="contact-success__icon" aria-hidden="true">' +
+          '<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="M4 11L9 16L18 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' +
+          '</svg>' +
+        '</span>' +
+        '<h3 class="contact-success__heading">Mensagem enviada!</h3>' +
+        '<p class="contact-success__sub">Recebemos seu contato e retornaremos em breve.</p>' +
+      '</div>';
+  }
+
+  // ── Submit ────────────────────────────────────
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    clearGlobalError();
+
+    // Valida todos os campos
+    var allFields = form.querySelectorAll('.contact-form__field');
+    var isValid = true;
+    allFields.forEach(function(fieldEl) {
+      if (!validateField(fieldEl)) isValid = false;
+    });
+    if (!isValid) {
+      // Foca no primeiro campo com erro
+      var firstError = form.querySelector('.has-error input, .has-error textarea');
+      if (firstError) firstError.focus();
+      return;
+    }
+
+    setLoading(true);
+
+    var payload = {
+      name:    form.querySelector('[name="name"]').value.trim(),
+      email:   form.querySelector('[name="email"]').value.trim(),
+      message: form.querySelector('[name="message"]').value.trim()
+    };
+
+    fetch(FORMSPREE_ENDPOINT, {
+      method:  'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload)
+    })
+    .then(function(res) {
+      return res.json().then(function(data) { return { ok: res.ok, data: data }; });
+    })
+    .then(function(result) {
+      setLoading(false);
+      if (result.ok) {
+        showSuccess();
+      } else {
+        var msg = (result.data && result.data.error) ? result.data.error
+                  : 'Algo deu errado. Por favor, tente novamente.';
+        showGlobalError(msg);
+      }
+    })
+    .catch(function() {
+      setLoading(false);
+      showGlobalError('Erro de conexão. Verifique sua internet e tente novamente.');
+    });
+  });
+}
+
 // ── Init ───────────────────────────────────────
 document.addEventListener('DOMContentLoaded', function() {
   initHeader();
@@ -416,4 +610,5 @@ document.addEventListener('DOMContentLoaded', function() {
   initSlider();
   initTestimonialsCarousel();
   initFaqAccordion();
+  initContactForm();
 });

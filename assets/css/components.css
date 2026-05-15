@@ -2665,6 +2665,34 @@ a.site-footer__contact-line:hover {
   resize: vertical;
 }
 
+/* ── Erro de campo ── */
+.contact-form__field.has-error .contact-form__input,
+.contact-form__field.has-error .contact-form__textarea {
+  border-color: #c94040;
+}
+
+.contact-form__error-msg {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11.4px;
+  line-height: 1.5;
+  color: #c94040;
+  margin-top: -4px; /* reduz o gap já existente no field */
+}
+
+/* ── Erro global (falha de rede/servidor) ── */
+.contact-form__global-error {
+  font-family: var(--font-body);
+  font-size: var(--text-body-md-size);
+  line-height: var(--text-body-md-lh);
+  color: #c94040;
+  background-color: rgba(201, 64, 64, 0.06);
+  border: 1px solid rgba(201, 64, 64, 0.2);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin: 0;
+}
+
 /* ── Submit button ── */
 .contact-form__submit {
   display: inline-flex;
@@ -2689,6 +2717,75 @@ a.site-footer__contact-line:hover {
 
 .contact-form__submit:hover {
   background-color: #35373e;
+}
+
+/* ── Loading: spinner inline no botão ── */
+.contact-form__submit.is-loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+  display: inline-flex;
+  gap: 10px;
+}
+
+.contact-form__submit.is-loading::after {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #ffffff;
+  border-radius: var(--radius-full);
+  animation: contact-spin 0.65s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes contact-spin {
+  to { transform: rotate(360deg); }
+}
+
+
+/* ═══════════════════════════════════════════
+ * CONTACT SUCCESS STATE
+ * Substitui o .contact-form-wrap após envio
+ * ═══════════════════════════════════════════ */
+
+.contact-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 56px 0;
+}
+
+.contact-success__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-bg-inverted);  /* #1d2029 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-success__heading {
+  font-family: var(--font-display);
+  font-size: 27.8px;
+  font-weight: var(--font-weight-medium);
+  line-height: 36px;
+  letter-spacing: -0.6px;
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.contact-success__sub {
+  font-family: var(--font-body);
+  font-size: var(--text-body-md-size);  /* 14.5px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--text-body-md-lh);  /* 20.8px */
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 /* ── Responsive — Mobile (< 768px) ── */
