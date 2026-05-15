@@ -167,19 +167,23 @@ function initSlider() {
     if (btnPrev) btnPrev.addEventListener('click', function() { slideBy(1); });
     if (btnNext) btnNext.addEventListener('click', function() { slideBy(-1); });
 
-    // ── Ícone: toggle is-open (click fecha o card aberto) ──
+    // ── Card: hover abre overlay + ícone anima; click navega ──
+    var wasDrag = false;
+
     items.forEach(function(item) {
       var icon = item.querySelector('.slider__icon');
-      if (!icon) return;
-      icon.addEventListener('click', function(e) {
-        e.preventDefault();
-        var isOpen = item.classList.contains('is-open');
-        // Fecha todos
-        items.forEach(function(i) { i.classList.remove('is-open'); });
-        // Se não estava aberto, abre
-        if (!isOpen) {
-          item.classList.add('is-open');
-        }
+      var href = icon ? icon.getAttribute('href') : null;
+      if (!href) return;
+      item.style.cursor = 'pointer';
+      item.addEventListener('mouseenter', function() {
+        item.classList.add('is-open');
+      });
+      item.addEventListener('mouseleave', function() {
+        item.classList.remove('is-open');
+      });
+      item.addEventListener('click', function() {
+        if (wasDrag) return;
+        window.location.href = href;
       });
     });
 
@@ -237,11 +241,13 @@ function initSlider() {
       isDragging = false;
       list.classList.remove('is-dragging');
       var delta = e.clientX - dragStartX;
+      wasDrag = Math.abs(delta) > 8;
       if (Math.abs(delta) > 60) {
         slideBy(delta > 0 ? 1 : -1);
       } else {
         slideTo(dragStartListX); // snap back
       }
+      if (wasDrag) setTimeout(function() { wasDrag = false; }, 50);
     });
 
     // ── Touch ──
