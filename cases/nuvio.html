@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fashion.ai — ezstudio</title>
+  <title>Nuvio — ezstudio</title>
 
   <link rel="stylesheet" href="../assets/css/design-system.css" />
   <link rel="stylesheet" href="../assets/css/base.css" />
@@ -15,9 +15,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
+
   <style>
     /* ═══════════════════════════════════════════
-     * CASE — Fashion.ai
+     * CASE — Nuvio
      * ═══════════════════════════════════════════ */
 
     .hero-case {
@@ -111,7 +112,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      object-position: center top;
       display: block;
     }
 
@@ -172,31 +173,25 @@
       flex-shrink: 0;
     }
 
-    .case-grid__item--half {
-      width: calc(50% - 5px);
-      aspect-ratio: 1 / 1;
+    .case-grid__item--third {
+      width: calc(33.333% - 7px);
+      aspect-ratio: 3 / 2;
     }
 
     .case-grid__item--full {
       width: 100%;
-      aspect-ratio: 1 / 1;
     }
 
-    .case-grid__item--landscape {
+    .case-grid__item img {
       width: 100%;
-      aspect-ratio: auto;
-      height: auto;
-    }
-
-    .case-grid__item--landscape img {
-      width: 100%;
-      height: auto;
-      object-fit: unset;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
-    .case-grid__item--empty {
-      display: none;
+    .case-grid__item--full img {
+      height: auto;
+      object-fit: unset;
     }
 
     /* ─── Responsividade ─── */
@@ -232,12 +227,18 @@
       .text-case__title { font-size: 1.75rem; }
       .case-grid { padding: var(--space-12) 1.25rem; }
 
-      .case-grid__item--half,
-      .case-grid__item--full { width: 100%; }
+      .case-grid__item--third { width: 100%; aspect-ratio: 16 / 9; }
+      .case-grid__item--full  { width: 100%; }
     }
   </style>
 </head>
 <body>
+
+  <!-- Background decorative circles -->
+  <div class="page-bg-circles" aria-hidden="true">
+    <img class="page-bg-circles__left"  src="../assets/images/bg/circle-left.png"  alt="" />
+    <img class="page-bg-circles__right" src="../assets/images/bg/circle-right.png" alt="" />
+  </div>
 
   <header class="site-header" id="site-header" role="banner">
     <div class="site-header__inner">
@@ -245,11 +246,9 @@
         <img src="../assets/images/logo.png" alt="ezstudio" width="78" height="18" />
       </a>
       <nav class="site-header__nav" aria-label="Navegação principal">
-        <a href="../index.html"     class="site-header__nav-link">Home</a>
-        <a href="../about.html"     class="site-header__nav-link">Sobre</a>
-        <a href="../work.html"      class="site-header__nav-link site-header__nav-link--active">Cases</a>
-        <a href="../solutions.html" class="site-header__nav-link">Serviços</a>
-        <a href="../contact.html"   class="site-header__nav-link">Contato</a>
+        <a href="../index.html"   class="site-header__nav-link">Home</a>
+        <a href="../work.html"    class="site-header__nav-link is-active">Cases</a>
+        <a href="../contact.html" class="site-header__nav-link">Contato</a>
       </nav>
       <button class="site-header__menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu">
         <span class="site-header__menu-label site-header__menu-label--open">Menu</span>
@@ -260,11 +259,9 @@
 
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Menu de navegação">
     <nav class="mobile-menu__nav" aria-label="Navegação mobile">
-      <a href="../index.html"     class="mobile-menu__link">Home</a>
-      <a href="../about.html"     class="mobile-menu__link">Sobre</a>
-      <a href="../work.html"      class="mobile-menu__link">Cases</a>
-      <a href="../solutions.html" class="mobile-menu__link">Serviços</a>
-      <a href="../contact.html"   class="mobile-menu__link">Contato</a>
+      <a href="../index.html"   class="mobile-menu__link">Home</a>
+      <a href="../work.html"    class="mobile-menu__link">Cases</a>
+      <a href="../contact.html" class="mobile-menu__link">Contato</a>
     </nav>
   </div>
 
@@ -275,10 +272,10 @@
       <div class="hero-case__header">
         <div class="hero-case__left">
           <div class="hero-case__text">
-            <h1 class="hero-case__heading">Plataforma AI para varejo de moda</h1>
+            <h1 class="hero-case__heading">Turning complex financial data into faster decision-making</h1>
             <p class="hero-case__sub">
-              Startup usando inteligência virtual para mudar<br>
-              a experiência de compra online.
+              Helping users make faster, more confident financial decisions<br>
+              through centralized data and clear visual hierarchy.
             </p>
           </div>
           <div class="hero-case__details">
@@ -288,18 +285,18 @@
             </div>
             <div class="hero-case__detail">
               <span class="hero-case__detail-label">Industry</span>
-              <span class="hero-case__detail-value">SaaS B2B</span>
+              <span class="hero-case__detail-value">Fintech · SaaS</span>
             </div>
             <div class="hero-case__detail">
               <span class="hero-case__detail-label">Client</span>
-              <span class="hero-case__detail-value">Fashion.ai</span>
+              <span class="hero-case__detail-value">Nuvio</span>
             </div>
           </div>
         </div>
 
-        <a class="cta-destaque" href="#" aria-label="View website">
+        <a class="cta-destaque" href="#" aria-label="View project">
           <div class="cta-destaque__top">
-            <span class="cta-destaque__label">View website</span>
+            <span class="cta-destaque__label">View project</span>
             <div class="cta-destaque__icon" aria-hidden="true">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 15H25M25 15L15 5M25 15L15 25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -316,8 +313,8 @@
       <div class="hero-case__image-wrap">
         <img
           class="hero-case__image"
-          src="fashionai/images/hero.png"
-          alt="Fashion.ai — Plataforma AI para varejo de moda"
+          src="nuvio/images/hero.png"
+          alt="Nuvio — Dashboard de gestão financeira pessoal"
           width="1362" height="681"
           loading="eager"
         />
@@ -329,17 +326,17 @@
 
       <div class="text-case__block">
         <h2 class="text-case__title">Overview</h2>
-        <p class="text-case__body">Trabalhamos na fase inicial do projeto, fazendo a fase de descoberta junto ao time do cliente. Além disso trabalhamos na criação da experiência inicial da plataforma e evolução para o MVP.</p>
+        <p class="text-case__body">Com uma base sólida em design de dashboards e interfaces orientadas a dados, enxerguei neste projeto a oportunidade de consolidar essa experiência em um produto completo de gestão financeira pessoal, onde clareza visual e tomada de decisão andam lado a lado.</p>
       </div>
 
       <div class="text-case__block">
         <h2 class="text-case__title">Solução</h2>
-        <p class="text-case__body">Metodologia rápida, estudos rápidos e evolução contínua. Fórmula que permitiu a Fashion.ai ter em semanas suas primeiras telas no ar e alterar o produto conforme feedback dos usuários quase em tempo real.</p>
+        <p class="text-case__body">Projetamos uma interface onde todas as informações financeiras do usuário coexistem com inteligência: onde gastou, como, quando e com uma orientação sobre como gastar melhor. Um dashboard que não apenas exibe números, mas oferece direcionamento em linguagem simples e visual limpo.</p>
       </div>
 
       <div class="text-case__block">
-        <h2 class="text-case__title">Números</h2>
-        <p class="text-case__body">Foram mais de 10 versões do projeto em meses. Cada novo update em dias, não semanas. Fomos capazes de levar o produto do dia 0 a receber investimento milionário com metodologia de usabilidade, pesquisa com usuários e evolução contínua baseada em resposta de usuários.</p>
+        <h2 class="text-case__title">Impacto</h2>
+        <p class="text-case__body">A plataforma transformou dados fragmentados em uma visão unificada e acionável das finanças do usuário. Com comparações por período, metas visuais e um guia de IA embutido, o produto passou de ferramenta de consulta para um verdadeiro parceiro financeiro diário.</p>
       </div>
 
     </section>
@@ -348,17 +345,17 @@
     <section class="case-grid" id="case-grid" aria-label="Project images">
       <div class="case-grid__grid">
 
-        <div class="case-grid__item case-grid__item--half">
-          <img src="fashionai/images/grid-1.png" alt="Fashion.ai — imagem 1" width="676" height="676" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="case-grid__item case-grid__item--third">
+          <img src="nuvio/images/grid-1.png" alt="Nuvio — tela 1" loading="lazy" />
         </div>
-        <div class="case-grid__item case-grid__item--half">
-          <img src="fashionai/images/grid-2.png" alt="Fashion.ai — imagem 2" width="676" height="676" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="case-grid__item case-grid__item--third">
+          <img src="nuvio/images/grid-2.png" alt="Nuvio — tela 2" loading="lazy" />
         </div>
-        <div class="case-grid__item case-grid__item--half">
-          <img src="fashionai/images/grid-3.png" alt="Fashion.ai — imagem 3" width="676" height="676" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="case-grid__item case-grid__item--third">
+          <img src="nuvio/images/grid-3.png" alt="Nuvio — tela 3" loading="lazy" />
         </div>
-        <div class="case-grid__item case-grid__item--half">
-          <img src="fashionai/images/grid-4.png" alt="Fashion.ai — imagem 4" width="676" height="676" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" />
+        <div class="case-grid__item case-grid__item--full">
+          <img src="nuvio/images/grid-4.png" alt="Nuvio — visão geral do dashboard" loading="lazy" />
         </div>
 
       </div>
@@ -406,7 +403,6 @@
         </div>
         <nav class="site-footer__pages" aria-label="Páginas">
           <a href="../index.html"  class="site-footer__nav-link">Home</a>
-          <a href="../about.html"  class="site-footer__nav-link">Sobre</a>
         </nav>
         <nav class="site-footer__legal" aria-label="Mais páginas">
           <a href="../work.html"    class="site-footer__nav-link site-footer__nav-link--active">Cases</a>
@@ -423,21 +419,6 @@
   <script src="../assets/js/gsap-init.js"></script>
   <script src="../assets/js/components.js"></script>
   <script src="../assets/js/animations.js"></script>
-  <script>
-    document.querySelectorAll('.case-grid__item').forEach(item => {
-      const img = item.querySelector('img');
-      if (!img) { item.classList.add('case-grid__item--empty'); return; }
-      const applyLayout = () => {
-        if (img.naturalWidth > img.naturalHeight) {
-          item.classList.remove('case-grid__item--half', 'case-grid__item--full');
-          item.classList.add('case-grid__item--landscape');
-        }
-      };
-      img.complete && img.naturalWidth ? applyLayout() : img.addEventListener('load', applyLayout);
-    });
-  </script>
-
-
 
 </body>
 </html>

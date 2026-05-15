@@ -16,8 +16,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
 </head>
 <body>
+
+  <!-- Background decorative circles -->
+  <div class="page-bg-circles" aria-hidden="true">
+    <img class="page-bg-circles__left"  src="assets/images/bg/circle-left.png"  alt="" />
+    <img class="page-bg-circles__right" src="assets/images/bg/circle-right.png" alt="" />
+  </div>
 
   <!-- Header -->
   <header class="site-header" id="site-header" role="banner">
@@ -26,11 +33,9 @@
         <img src="assets/images/logo.png" alt="ezstudio" width="78" height="18" />
       </a>
       <nav class="site-header__nav" aria-label="Navegação principal">
-        <a href="index.html"     class="site-header__nav-link">Home</a>
-        <a href="about.html"     class="site-header__nav-link">Sobre</a>
-        <a href="work.html"      class="site-header__nav-link">Cases</a>
-        <a href="solutions.html" class="site-header__nav-link">Serviços</a>
-        <a href="contact.html"   class="site-header__nav-link">Contato</a>
+        <a href="index.html"   class="site-header__nav-link">Home</a>
+        <a href="work.html"    class="site-header__nav-link">Cases</a>
+        <a href="contact.html" class="site-header__nav-link">Contato</a>
       </nav>
       <button class="site-header__menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu">
         <span class="site-header__menu-label site-header__menu-label--open">Menu</span>
@@ -42,11 +47,9 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Menu de navegação">
     <nav class="mobile-menu__nav" aria-label="Navegação mobile">
-      <a href="index.html"     class="mobile-menu__link">Home</a>
-      <a href="about.html"     class="mobile-menu__link">Sobre</a>
-      <a href="work.html"      class="mobile-menu__link">Cases</a>
-      <a href="solutions.html" class="mobile-menu__link">Serviços</a>
-      <a href="contact.html"   class="mobile-menu__link">Contato</a>
+      <a href="index.html"   class="mobile-menu__link">Home</a>
+      <a href="work.html"    class="mobile-menu__link">Cases</a>
+      <a href="contact.html" class="mobile-menu__link">Contato</a>
     </nav>
   </div>
 
@@ -68,20 +71,15 @@
         </div>
       </div>
 
-      <!-- Grid: 2×3 cards -->
+      <!-- Grid: 3 colunas — todos os cases -->
       <div class="projects-grid__cards">
 
         <article class="card-case">
           <a class="card-image" href="cases/caiofonseca.html" aria-label="Ver case: Caio Fonseca Advocacia">
-            <img class="card-image__img"
-              src="cases/caiofonseca/images/thumb_case.png"
-              alt="Caio Fonseca Advocacia"
-              width="669" height="669" loading="lazy" />
+            <img class="card-image__img" src="cases/caiofonseca/images/thumb_case.png" alt="Caio Fonseca Advocacia" width="669" height="669" loading="eager" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
@@ -93,15 +91,10 @@
 
         <article class="card-case">
           <a class="card-image" href="cases/dateahome.html" aria-label="Ver case: Date a Home Plataforma">
-            <img class="card-image__img"
-              src="cases/dateahome/images/thumb_case.png"
-              alt="Date a Home Plataforma"
-              width="669" height="669" loading="lazy" />
+            <img class="card-image__img" src="cases/dateahome/images/thumb_case.png" alt="Date a Home Plataforma" width="669" height="669" loading="eager" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
@@ -113,60 +106,90 @@
 
         <article class="card-case">
           <a class="card-image" href="cases/fashionai.html" aria-label="Ver case: Fashion.ai">
-            <img class="card-image__img"
-              src="cases/fashionai/images/thumb_case.png"
-              alt="Plataforma AI para varejo de moda"
-              width="669" height="669" loading="lazy" />
+            <img class="card-image__img" src="cases/fashionai/images/thumb_case.png" alt="Fashion.ai" width="669" height="669" loading="eager" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
           <div class="card-case__content">
-            <h3 class="card-case__title">Plataforma AI para varejo de moda</h3>
+            <h3 class="card-case__title">Fashion.ai</h3>
             <span class="card-case__meta">10 semanas</span>
           </div>
         </article>
 
         <article class="card-case">
-          <a class="card-image" href="cases/bs2.html" aria-label="Ver case: Banco BS2">
-            <img class="card-image__img"
-              src="cases/bs2/images/thumb_case.png"
-              alt="Banco BS2 - Produto"
-              width="669" height="669" loading="eager" />
+          <a class="card-image" href="cases/anz.html" aria-label="Ver case: Air New Zealand">
+            <img class="card-image__img" src="cases/anz/images/thumb_case.png" alt="Air New Zealand" width="669" height="669" loading="lazy" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
           <div class="card-case__content">
-            <h3 class="card-case__title">Banco BS2 - Produto</h3>
+            <h3 class="card-case__title">Air New Zealand</h3>
+            <span class="card-case__meta">12 semanas</span>
+          </div>
+        </article>
+
+        <article class="card-case">
+          <a class="card-image" href="cases/nuvio.html" aria-label="Ver case: Nuvio">
+            <img class="card-image__img" src="cases/nuvio/images/thumb_case.png" alt="Nuvio" width="669" height="669" loading="lazy" />
+            <div class="card-image__hover" aria-hidden="true">
+              <div class="card-image__icon-btn">
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </a>
+          <div class="card-case__content">
+            <h3 class="card-case__title">Nuvio</h3>
+            <span class="card-case__meta">10 semanas</span>
+          </div>
+        </article>
+
+        <article class="card-case">
+          <a class="card-image" href="cases/design-system.html" aria-label="Ver case: Design System Subscribe">
+            <img class="card-image__img" src="cases/design-system/images/thumb_case.png" alt="Design System Subscribe" width="669" height="669" loading="lazy" />
+            <div class="card-image__hover" aria-hidden="true">
+              <div class="card-image__icon-btn">
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </a>
+          <div class="card-case__content">
+            <h3 class="card-case__title">Design System Subscribe</h3>
+            <span class="card-case__meta">12 semanas</span>
+          </div>
+        </article>
+
+        <article class="card-case">
+          <a class="card-image" href="cases/bs2.html" aria-label="Ver case: Banco BS2">
+            <img class="card-image__img" src="cases/bs2/images/thumb_case.png" alt="Banco BS2" width="669" height="669" loading="lazy" />
+            <div class="card-image__hover" aria-hidden="true">
+              <div class="card-image__icon-btn">
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </a>
+          <div class="card-case__content">
+            <h3 class="card-case__title">Banco BS2</h3>
             <span class="card-case__meta">12 semanas</span>
           </div>
         </article>
 
         <article class="card-case">
           <a class="card-image" href="cases/dechelles.html" aria-label="Ver case: De Chelles Ecommerce">
-            <img class="card-image__img"
-              src="cases/dechelles/images/thumb_case.png"
-              alt="Relayout Ecommerce De Chelles"
-              width="669" height="669" loading="eager" />
+            <img class="card-image__img" src="cases/dechelles/images/thumb_case.png" alt="De Chelles Ecommerce" width="669" height="669" loading="lazy" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
           <div class="card-case__content">
-            <h3 class="card-case__title">Relayout Ecommerce De Chelles</h3>
+            <h3 class="card-case__title">De Chelles</h3>
             <span class="card-case__meta">12 semanas</span>
           </div>
         </article>

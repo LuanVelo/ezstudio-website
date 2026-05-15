@@ -7,6 +7,47 @@
 
 
 /* ═══════════════════════════════════════════
+ * BACKGROUND CIRCLES
+ * Blobs decorativos do Figma — aparecem em todas as páginas.
+ * z-index: -1 garante que ficam abaixo de todo o conteúdo.
+ * overflow: hidden no container corta o que vazar da tela.
+ * ═══════════════════════════════════════════ */
+
+.page-bg-circles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+/* Blob grande — esquerda, começa levemente acima e fora da tela */
+.page-bg-circles__left {
+  position: absolute;
+  left: -16%;
+  top: -12%;
+  width: 59%;
+  max-width: 850px;
+}
+
+/* Blob menor — canto superior direito, quase todo fora da tela (como no Figma) */
+.page-bg-circles__right {
+  position: absolute;
+  right: -10%;
+  top: -58%;
+  width: 28%;
+  max-width: 400px;
+}
+
+@media (max-width: 767px) {
+  .page-bg-circles__left  { width: 90%; left: -30%; top: -6%; }
+  .page-bg-circles__right { width: 55%; right: -20%; top: -30%; }
+}
+
+/* ═══════════════════════════════════════════
  * SITE HEADER
  * Variantes controladas por classes JS:
  *   .is-hidden  — scroll down → header some
@@ -19,7 +60,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  height: 42px;
+  height: 80px;
 
   /* Glass base — sempre visível */
   backdrop-filter: blur(var(--color-header-blur));
@@ -60,9 +101,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 12px var(--space-10); /* 12px 40px */
+  padding: 0 var(--space-10); /* mesmo padding horizontal das sections */
   height: 100%;
 }
 
@@ -199,7 +238,7 @@
 @media (max-width: 767px) {
 
   .site-header__inner {
-    padding: 12px var(--space-5); /* 12px 20px */
+    padding: 0 var(--space-5); /* vertical centrado via height:100% */
   }
 
   /* Esconde nav desktop */
@@ -1224,9 +1263,22 @@ a.site-footer__contact-line:hover {
 /* ── Grid 2×2 ── */
 .projects__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 56px 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 24px;
   width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── CTA "Ver todos" — centralizado abaixo do grid ── */
+.projects__cta {
+  display: flex;
+  justify-content: center;
+  padding-top: 16px;
 }
 
 /* ── Responsive — Mobile (< 768px) ── */
@@ -1257,12 +1309,19 @@ a.site-footer__contact-line:hover {
   background-color: var(--color-bg-primary);
 }
 
-/* ── Grid 2×3 ── */
+/* ── Grid 3 colunas ── */
 .projects-grid__cards {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 56px 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px 24px;
   width: 100%;
+}
+
+/* ── Responsive — Tablet (< 1024px) ── */
+@media (max-width: 1024px) {
+  .projects-grid__cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* ── Responsive — Mobile (< 768px) ── */
@@ -1580,6 +1639,19 @@ a.site-footer__contact-line:hover {
   object-position: center;
   flex-shrink: 0;
   display: block;
+}
+
+/* Avatar com iniciais — fallback quando não há foto real */
+.testimonial-card__avatar--initials {
+  background-color: var(--color-dark, #1d2029);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
 .testimonial-card__author-info {

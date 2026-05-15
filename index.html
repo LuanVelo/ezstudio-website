@@ -16,8 +16,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
 </head>
 <body>
+
+  <!-- Background decorative circles (Figma: "Backgroung Ollpas") -->
+  <div class="page-bg-circles" aria-hidden="true">
+    <img class="page-bg-circles__left"  src="assets/images/bg/circle-left.png"  alt="" />
+    <img class="page-bg-circles__right" src="assets/images/bg/circle-right.png" alt="" />
+  </div>
 
   <!-- Header -->
   <header class="site-header" id="site-header" role="banner">
@@ -26,11 +33,9 @@
         <img src="assets/images/logo.png" alt="ezstudio" width="78" height="18" />
       </a>
       <nav class="site-header__nav" aria-label="Navegação principal">
-        <a href="index.html"     class="site-header__nav-link">Home</a>
-        <a href="about.html"     class="site-header__nav-link">Sobre</a>
-        <a href="work.html"      class="site-header__nav-link">Cases</a>
-        <a href="solutions.html" class="site-header__nav-link">Serviços</a>
-        <a href="contact.html"   class="site-header__nav-link">Contato</a>
+        <a href="index.html"   class="site-header__nav-link">Home</a>
+        <a href="work.html"    class="site-header__nav-link">Cases</a>
+        <a href="contact.html" class="site-header__nav-link">Contato</a>
       </nav>
       <button class="site-header__menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-menu">
         <span class="site-header__menu-label site-header__menu-label--open">Menu</span>
@@ -42,11 +47,9 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="dialog" aria-label="Menu de navegação">
     <nav class="mobile-menu__nav" aria-label="Navegação mobile">
-      <a href="index.html"     class="mobile-menu__link">Home</a>
-      <a href="about.html"     class="mobile-menu__link">Sobre</a>
-      <a href="work.html"      class="mobile-menu__link">Cases</a>
-      <a href="solutions.html" class="mobile-menu__link">Serviços</a>
-      <a href="contact.html"   class="mobile-menu__link">Contato</a>
+      <a href="index.html"   class="mobile-menu__link">Home</a>
+      <a href="work.html"    class="mobile-menu__link">Cases</a>
+      <a href="contact.html" class="mobile-menu__link">Contato</a>
     </nav>
   </div>
 
@@ -84,97 +87,97 @@
 
       </div>
 
-      <!-- Slider -->
-      <div class="slider" data-slider>
+      <!-- Slider — infinite auto-play com imagens reais dos cases -->
+      <div class="slider" data-slider data-infinite>
         <div class="slider__container">
           <div class="slider__list">
 
             <article class="slider__item">
               <figure class="slider__media">
-                <img src="assets/images/slider/slide-1.png" alt="Foam Serum Launch" loading="eager" />
+                <img src="cases/caiofonseca/images/hero.png" alt="Caio Fonseca Advocacia" loading="eager" />
               </figure>
               <div class="slider__content">
                 <div class="slider__titles">
-                  <h3 class="slider__title">Foam Serum Launch</h3>
-                  <p class="slider__desc">Bubbly physics + product CGI<br>used across hero, ads, and socials.</p>
+                  <h3 class="slider__title">Caio Fonseca<br>Advocacia</h3>
+                  <p class="slider__desc">Identidade web para um escritório<br>de advocacia de alto padrão.</p>
                 </div>
               </div>
-              <a class="slider__icon" href="#" aria-label="Ver case: Foam Serum Launch">
+              <a class="slider__icon" href="cases/caiofonseca.html" aria-label="Ver case: Caio Fonseca">
                 <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </article>
 
             <article class="slider__item">
               <figure class="slider__media">
-                <img src="assets/images/slider/slide-2.jpg" alt="" loading="lazy" />
-              </figure>
-              <div class="slider__content"></div>
-              <a class="slider__icon" href="#" aria-label="Ver case">
-                <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </a>
-            </article>
-
-            <article class="slider__item">
-              <figure class="slider__media">
-                <img src="assets/images/slider/slide-3.png" alt="Modular Framer Websites" loading="lazy" />
+                <img src="cases/dateahome/images/hero.png" alt="Date a Home Plataforma" loading="lazy" />
               </figure>
               <div class="slider__content">
                 <div class="slider__titles">
-                  <h3 class="slider__title">Modular Framer<br>Websites</h3>
-                  <p class="slider__desc">Component-driven builds with<br>responsive grids and subtle motion.</p>
+                  <h3 class="slider__title">Date a Home<br>Plataforma</h3>
+                  <p class="slider__desc">Startup imobiliária com experiência<br>de match para encontrar imóveis.</p>
                 </div>
               </div>
-              <a class="slider__icon" href="#" aria-label="Ver case: Modular Framer Websites">
+              <a class="slider__icon" href="cases/dateahome.html" aria-label="Ver case: Date a Home">
                 <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </article>
 
             <article class="slider__item">
               <figure class="slider__media">
-                <img src="assets/images/slider/slide-4.jpg" alt="Visual Identity Lab" loading="lazy" />
+                <img src="cases/anz/images/hero.png" alt="Air New Zealand" loading="lazy" />
               </figure>
               <div class="slider__content">
                 <div class="slider__titles">
-                  <h3 class="slider__title">Visual Identity Lab</h3>
-                  <p class="slider__desc">Material-driven identity systems—<br>palette, type, textures, and signature.</p>
+                  <h3 class="slider__title">Air New<br>Zealand</h3>
+                  <p class="slider__desc">Redesign de app para<br>uma das maiores companhias aéreas.</p>
                 </div>
               </div>
-              <a class="slider__icon" href="#" aria-label="Ver case: Visual Identity Lab">
+              <a class="slider__icon" href="cases/anz.html" aria-label="Ver case: Air New Zealand">
                 <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </article>
 
             <article class="slider__item">
               <figure class="slider__media">
-                <img src="assets/images/slider/slide-5.jpg" alt="Covers" loading="lazy" />
+                <img src="cases/nuvio/images/hero.png" alt="Nuvio" loading="lazy" />
               </figure>
               <div class="slider__content">
                 <div class="slider__titles">
-                  <h3 class="slider__title">Covers</h3>
-                  <p class="slider__desc">We delivered over 250<br>editorial designs this year</p>
+                  <h3 class="slider__title">Nuvio</h3>
+                  <p class="slider__desc">Gestão financeira pessoal<br>com design focado em clareza.</p>
                 </div>
               </div>
-              <a class="slider__icon" href="#" aria-label="Ver case: Covers">
+              <a class="slider__icon" href="cases/nuvio.html" aria-label="Ver case: Nuvio">
                 <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </article>
 
             <article class="slider__item">
               <figure class="slider__media">
-                <img src="assets/images/slider/slide-6.jpg" alt="" loading="lazy" />
+                <img src="cases/design-system/images/hero.png" alt="Design System Subscribe" loading="lazy" />
               </figure>
-              <div class="slider__content"></div>
-              <a class="slider__icon" href="#" aria-label="Ver case">
+              <div class="slider__content">
+                <div class="slider__titles">
+                  <h3 class="slider__title">Design<br>System</h3>
+                  <p class="slider__desc">Sistema de design escalável<br>para produto em crescimento.</p>
+                </div>
+              </div>
+              <a class="slider__icon" href="cases/design-system.html" aria-label="Ver case: Design System">
                 <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </article>
 
             <article class="slider__item">
               <figure class="slider__media">
-                <img src="assets/images/slider/slide-7.jpg" alt="" loading="lazy" />
+                <img src="cases/dechelles/images/hero-01.jpg" alt="De Chelles Ecommerce" loading="lazy" />
               </figure>
-              <div class="slider__content"></div>
-              <a class="slider__icon" href="#" aria-label="Ver case">
+              <div class="slider__content">
+                <div class="slider__titles">
+                  <h3 class="slider__title">De Chelles<br>Ecommerce</h3>
+                  <p class="slider__desc">Relayout completo de ecommerce<br>para marca de moda premium.</p>
+                </div>
+              </div>
+              <a class="slider__icon" href="cases/dechelles.html" aria-label="Ver case: De Chelles">
                 <svg width="21" height="21" viewBox="0 0 16 16" fill="none"><path d="M8 2V14M2 8H14" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </a>
             </article>
@@ -215,8 +218,8 @@
         <figure class="what-we-do__figure">
           <img
             class="what-we-do__img"
-            src="https://www.figma.com/api/mcp/asset/e22e8a2b-f5aa-432c-b4a9-53c2c3578573"
-            alt="ezstudio workspace — laptop on a desk with plants"
+            src="assets/images/slider/slide-5.jpg"
+            alt="ezstudio workspace"
             width="1360"
             height="960"
             loading="lazy"
@@ -259,89 +262,104 @@
         </a>
       </div>
 
-      <!-- Grid: 2×2 cards -->
+      <!-- Grid: 3 colunas × 2 linhas = 6 cases -->
       <div class="projects__grid">
 
         <article class="card-case">
-          <a class="card-image" href="case-template.html" aria-label="Ver case: Nuvio">
-            <img class="card-image__img"
-              src="https://www.figma.com/api/mcp/asset/a09a1d66-ca05-4a31-941e-a07ecd613773"
-              alt="Nuvio — Personal Financial Management"
-              width="669" height="669" loading="lazy" />
+          <a class="card-image" href="cases/caiofonseca.html" aria-label="Ver case: Caio Fonseca Advocacia">
+            <img class="card-image__img" src="cases/caiofonseca/images/thumb_case.png" alt="Caio Fonseca Advocacia" width="669" height="669" loading="lazy" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
           <div class="card-case__content">
-            <h3 class="card-case__title">Nuvio - Personal Financial Management (Concept Project)</h3>
-            <span class="card-case__meta">4 weeks</span>
+            <h3 class="card-case__title">Caio Fonseca Advocacia</h3>
+            <span class="card-case__meta">4 semanas</span>
           </div>
         </article>
 
         <article class="card-case">
-          <a class="card-image" href="case-template.html" aria-label="Ver case: Nuvio">
-            <img class="card-image__img"
-              src="https://www.figma.com/api/mcp/asset/a09a1d66-ca05-4a31-941e-a07ecd613773"
-              alt="Nuvio — Personal Financial Management"
-              width="669" height="669" loading="lazy" />
+          <a class="card-image" href="cases/dateahome.html" aria-label="Ver case: Date a Home Plataforma">
+            <img class="card-image__img" src="cases/dateahome/images/thumb_case.png" alt="Date a Home Plataforma" width="669" height="669" loading="lazy" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
           <div class="card-case__content">
-            <h3 class="card-case__title">Nuvio - Personal Financial Management (Concept Project)</h3>
-            <span class="card-case__meta">4 weeks</span>
+            <h3 class="card-case__title">Date a Home Plataforma</h3>
+            <span class="card-case__meta">12 semanas</span>
           </div>
         </article>
 
         <article class="card-case">
-          <a class="card-image" href="case-template.html" aria-label="Ver case: Nuvio">
-            <img class="card-image__img"
-              src="https://www.figma.com/api/mcp/asset/a09a1d66-ca05-4a31-941e-a07ecd613773"
-              alt="Nuvio — Personal Financial Management"
-              width="669" height="669" loading="lazy" />
+          <a class="card-image" href="cases/fashionai.html" aria-label="Ver case: Fashion.ai">
+            <img class="card-image__img" src="cases/fashionai/images/thumb_case.png" alt="Fashion.ai" width="669" height="669" loading="lazy" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
           <div class="card-case__content">
-            <h3 class="card-case__title">Nuvio - Personal Financial Management (Concept Project)</h3>
-            <span class="card-case__meta">4 weeks</span>
+            <h3 class="card-case__title">Fashion.ai</h3>
+            <span class="card-case__meta">10 semanas</span>
           </div>
         </article>
 
         <article class="card-case">
-          <a class="card-image" href="case-template.html" aria-label="Ver case: Nuvio">
-            <img class="card-image__img"
-              src="https://www.figma.com/api/mcp/asset/a09a1d66-ca05-4a31-941e-a07ecd613773"
-              alt="Nuvio — Personal Financial Management"
-              width="669" height="669" loading="lazy" />
+          <a class="card-image" href="cases/anz.html" aria-label="Ver case: Air New Zealand">
+            <img class="card-image__img" src="cases/anz/images/thumb_case.png" alt="Air New Zealand" width="669" height="669" loading="lazy" />
             <div class="card-image__hover" aria-hidden="true">
               <div class="card-image__icon-btn">
-                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </a>
           <div class="card-case__content">
-            <h3 class="card-case__title">Nuvio - Personal Financial Management (Concept Project)</h3>
-            <span class="card-case__meta">4 weeks</span>
+            <h3 class="card-case__title">Air New Zealand</h3>
+            <span class="card-case__meta">12 semanas</span>
           </div>
         </article>
 
+        <article class="card-case">
+          <a class="card-image" href="cases/nuvio.html" aria-label="Ver case: Nuvio">
+            <img class="card-image__img" src="cases/nuvio/images/thumb_case.png" alt="Nuvio" width="669" height="669" loading="lazy" />
+            <div class="card-image__hover" aria-hidden="true">
+              <div class="card-image__icon-btn">
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </a>
+          <div class="card-case__content">
+            <h3 class="card-case__title">Nuvio</h3>
+            <span class="card-case__meta">10 semanas</span>
+          </div>
+        </article>
+
+        <article class="card-case">
+          <a class="card-image" href="cases/design-system.html" aria-label="Ver case: Design System">
+            <img class="card-image__img" src="cases/design-system/images/thumb_case.png" alt="Design System Subscribe" width="669" height="669" loading="lazy" />
+            <div class="card-image__hover" aria-hidden="true">
+              <div class="card-image__icon-btn">
+                <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.5H30M30 17.5L17.5 5M30 17.5L17.5 30" stroke="#1d2029" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </a>
+          <div class="card-case__content">
+            <h3 class="card-case__title">Design System Subscribe</h3>
+            <span class="card-case__meta">12 semanas</span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- CTA Ver todos os trabalhos -->
+      <div class="projects__cta">
+        <a href="work.html" class="btn btn--primary">Ver todos os trabalhos</a>
       </div>
 
     </section>
@@ -370,15 +388,15 @@
           <div class="service-card__inner">
             <figure class="service-card__media">
               <img class="service-card__img"
-                src="https://www.figma.com/api/mcp/asset/51c97f92-34a1-4c85-8ce7-95410264ee33"
-                alt="Product consulting — workspace with laptop and design materials"
+                src="assets/images/slider/slide-1.png"
+                alt="Consultoria e Análise de Produto"
                 width="509" height="480" loading="lazy" />
             </figure>
             <div class="service-card__content">
               <div class="service-card__header">
                 <span class="service-card__number">01</span>
                 <h3 class="service-card__heading">Consultoria e<br>Análise de Produto</h3>
-                <p class="service-card__body">Mergulhamos fundo no seu produto para identificar gaps, oportunidades e desalinhamentos — para que cada decisão de design esteja enraizada em estratégia, não em achismo.</p>
+                <p class="service-card__body">Mergulhamos fundo no seu produto para identificar gaps, oportunidades e desalinhamentos, para que cada decisão de design esteja enraizada em estratégia, não em achismo.</p>
               </div>
               <div class="service-card__tags">
                 <span class="tag tag--ghost">Diagnóstico de produto</span>
@@ -394,15 +412,15 @@
           <div class="service-card__inner">
             <figure class="service-card__media">
               <img class="service-card__img"
-                src="https://www.figma.com/api/mcp/asset/cd2b112c-474b-48b3-b921-635c6272facf"
-                alt="Governance — macro of clear effervescent bubbles"
+                src="assets/images/slider/slide-3.png"
+                alt="Governança — mantemos o ritmo"
                 width="509" height="480" loading="lazy" />
             </figure>
             <div class="service-card__content">
               <div class="service-card__header">
                 <span class="service-card__number">02</span>
-                <h3 class="service-card__heading">Governança —<br>Mantemos o ritmo</h3>
-                <p class="service-card__body">Assumimos a responsabilidade pelas operações de design do seu produto — conduzindo revisões recorrentes, acompanhando métricas e mantendo a qualidade consistente ao longo do tempo. Você foca em construir; a gente garante que o design nunca fica para trás.</p>
+                <h3 class="service-card__heading">Governança<br>Mantemos o ritmo</h3>
+                <p class="service-card__body">Assumimos a responsabilidade pelas operações de design do seu produto, conduzindo revisões recorrentes, acompanhando métricas e mantendo a qualidade consistente ao longo do tempo. Você foca em construir; a gente garante que o design nunca fica para trás.</p>
               </div>
               <div class="service-card__tags">
                 <span class="tag tag--ghost">Revisão recorrente de produto</span>
@@ -418,15 +436,15 @@
           <div class="service-card__inner">
             <figure class="service-card__media">
               <img class="service-card__img"
-                src="https://www.figma.com/api/mcp/asset/b4f4834d-4022-45e9-978f-9e8a4270d23d"
-                alt="Operational — abstract glitter resin sculpture"
+                src="assets/images/slider/slide-4.jpg"
+                alt="Operacional — fazemos acontecer"
                 width="509" height="480" loading="lazy" />
             </figure>
             <div class="service-card__content">
               <div class="service-card__header">
                 <span class="service-card__number">03</span>
-                <h3 class="service-card__heading">Operacional —<br>Fazemos acontecer</h3>
-                <p class="service-card__body">É aqui que tudo ganha vida. Design e desenvolvimento lado a lado — mesmo time, mesma visão, sem atrito de handoff. Construímos seu produto do início ao fim e ficamos por perto depois do lançamento para garantir que ele performa no mundo real.</p>
+                <h3 class="service-card__heading">Operacional<br>Fazemos acontecer</h3>
+                <p class="service-card__body">É aqui que tudo ganha vida. Design e desenvolvimento lado a lado, mesmo time, mesma visão, sem atrito de handoff. Construímos seu produto do início ao fim e ficamos por perto depois do lançamento para garantir que ele performa no mundo real.</p>
               </div>
               <div class="service-card__tags">
                 <span class="tag tag--ghost">UX/UI Design</span>
@@ -478,7 +496,7 @@
                 <blockquote class="testimonial-card__quote">Eduardo and his projects have the quality and intelligence that is needed in today's world of technology. He can transform an idea into an artifact that's easy to be used by anyone. Besides having a vision of the market, knowledge and know-how, he knows how to deal with clients, solve unexpected problems and interact with any team in order to achieve the most possible satisfactory result.</blockquote>
               </div>
               <div class="testimonial-card__author">
-                <img class="testimonial-card__avatar" src="https://www.figma.com/api/mcp/asset/389790d7-4dbb-4098-84eb-011d886da46d" alt="Pedro Franceschi" width="60" height="60" loading="lazy" />
+                <div class="testimonial-card__avatar testimonial-card__avatar--initials" aria-label="Pedro Franceschi">PF</div>
                 <div class="testimonial-card__author-info">
                   <span class="testimonial-card__author-name">Pedro Franceschi</span>
                   <span class="testimonial-card__author-role">Founder at Brex</span>
@@ -500,7 +518,7 @@
                 <blockquote class="testimonial-card__quote">Eduardo and his projects have the quality and intelligence that is needed in today's world of technology. He can transform an idea into an artifact that's easy to be used by anyone. Besides having a vision of the market, knowledge and know-how, he knows how to deal with clients, solve unexpected problems and interact with any team in order to achieve the most possible satisfactory result.</blockquote>
               </div>
               <div class="testimonial-card__author">
-                <img class="testimonial-card__avatar" src="https://www.figma.com/api/mcp/asset/389790d7-4dbb-4098-84eb-011d886da46d" alt="Pedro Franceschi" width="60" height="60" loading="lazy" />
+                <div class="testimonial-card__avatar testimonial-card__avatar--initials" aria-label="Pedro Franceschi">PF</div>
                 <div class="testimonial-card__author-info">
                   <span class="testimonial-card__author-name">Pedro Franceschi</span>
                   <span class="testimonial-card__author-role">Founder at Brex</span>
@@ -522,7 +540,7 @@
                 <blockquote class="testimonial-card__quote">Eduardo and his projects have the quality and intelligence that is needed in today's world of technology. He can transform an idea into an artifact that's easy to be used by anyone. Besides having a vision of the market, knowledge and know-how, he knows how to deal with clients, solve unexpected problems and interact with any team in order to achieve the most possible satisfactory result.</blockquote>
               </div>
               <div class="testimonial-card__author">
-                <img class="testimonial-card__avatar" src="https://www.figma.com/api/mcp/asset/389790d7-4dbb-4098-84eb-011d886da46d" alt="Pedro Franceschi" width="60" height="60" loading="lazy" />
+                <div class="testimonial-card__avatar testimonial-card__avatar--initials" aria-label="Pedro Franceschi">PF</div>
                 <div class="testimonial-card__author-info">
                   <span class="testimonial-card__author-name">Pedro Franceschi</span>
                   <span class="testimonial-card__author-role">Founder at Brex</span>
@@ -572,7 +590,7 @@
             </span>
           </button>
           <div class="faq-item__body">
-            <p class="faq-item__answer">Desenhamos e construímos produtos digitais — de aplicativos mobile a plataformas web — levando sua ideia por estratégia, design e desenvolvimento até estar no ar e pronto para crescer.</p>
+            <p class="faq-item__answer">Desenhamos e construímos produtos digitais, de aplicativos mobile a plataformas web, levando sua ideia por estratégia, design e desenvolvimento até estar no ar e pronto para crescer.</p>
           </div>
         </div>
 
@@ -586,7 +604,7 @@
             </span>
           </button>
           <div class="faq-item__body">
-            <p class="faq-item__answer">Conectamos os objetivos do negócio com as necessidades dos usuários — criando produtos que não só têm boa aparência, mas que performam, convertem e escalam. Seja para validar uma ideia ou melhorar um produto existente, trazemos estrutura e execução.</p>
+            <p class="faq-item__answer">Conectamos os objetivos do negócio com as necessidades dos usuários, criando produtos que não só têm boa aparência, mas que performam, convertem e escalam. Seja para validar uma ideia ou melhorar um produto existente, trazemos estrutura e execução.</p>
           </div>
         </div>
 
@@ -600,7 +618,7 @@
             </span>
           </button>
           <div class="faq-item__body">
-            <p class="faq-item__answer">Direção de produto indefinida, experiência ruim do usuário, desenvolvimento lento, design inconsistente — já vimos de tudo. Chegamos com um processo claro para corrigir o que está quebrado e construir o que está faltando.</p>
+            <p class="faq-item__answer">Direção de produto indefinida, experiência ruim do usuário, desenvolvimento lento, design inconsistente. Já vimos de tudo. Chegamos com um processo claro para corrigir o que está quebrado e construir o que está faltando.</p>
           </div>
         </div>
 
@@ -614,7 +632,7 @@
             </span>
           </button>
           <div class="faq-item__body">
-            <p class="faq-item__answer">Começamos com uma fase de descoberta para entender seu produto, usuários e objetivos. Depois partimos para design, construção e iteração — sempre te mantendo informado. Sem caixas pretas, sem surpresas.</p>
+            <p class="faq-item__answer">Começamos com uma fase de descoberta para entender seu produto, usuários e objetivos. Depois partimos para design, construção e iteração, sempre te mantendo informado. Sem caixas pretas, sem surpresas.</p>
           </div>
         </div>
 

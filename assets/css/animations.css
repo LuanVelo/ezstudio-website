@@ -118,6 +118,7 @@ body.is-loaded [data-gsap] {
   /* GSAP gerencia a partir daqui */
 }
 
+
 /* Previne animações em usuários que preferem movimento reduzido */
 @media (prefers-reduced-motion: reduce) {
   [data-gsap] {

@@ -1,4 +1,31 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(grep *)",
+      "Bash(grep -n *)",
+      "Bash(grep -rn *)",
+      "Bash(grep -r *)",
+      "Bash(grep -A *)",
+      "Bash(grep -c *)",
+      "Bash(grep -l *)",
+      "Bash(sed -n *)",
+      "Bash(find * -name *)",
+      "Bash(find * -type *)",
+      "Bash(find * -not *)",
+      "Bash(find * -mindepth *)",
+      "Bash(ls *)",
+      "Bash(ls -la *)",
+      "Bash(ls -t *)",
+      "Bash(ls -lh *)",
+      "Bash(lsof -ti:*)",
+      "Bash(lsof *)",
+      "Bash(pkill -f *)",
+      "Bash(curl -s *)",
+      "Bash(curl -sL *)",
+      "Bash(open *)",
+      "Bash(mkdir -p *)"
+    ]
+  },
   "hooks": {
     "WorktreeCreate": [
       {
